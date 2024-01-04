@@ -8,10 +8,4 @@ def login(request):
 
 def register(request):
     return render(request, 'main/register.html') ;
-
-def tariff(request):
-    return render(request, 'main/tariff.html') ;
-
-def offers(request):
-    return render(request, 'main/offers.html') ;
 # Create your views here.

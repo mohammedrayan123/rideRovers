@@ -16,11 +16,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from mvrr.views import index,login,register
+from mvrr.views import index,login,register,tariff,offer,location,contact,about,privacy,tc,help
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("",index,name="index"),
     path("main/login.html",view=login,name="login"),
     path("main/register.html",view=register,name="register"),
+    path("main/tariff.html",view=tariff,name="tariff"),
+    path("main/offer.html",view=offer,name="offer"),
+    path("main/location.html",view=location,name="location"),
+    path("main/contact.html",view=contact,name="contact"),
+    path("main/about.html",view=about,name="about"),
+    path("main/privacy.html",view=privacy,name="privacy"),
+    path("main/tc.html",view=tc,name="tc"),
+    path("main/help.html",view=help,name="help"),
+
 ]

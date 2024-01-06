@@ -9,6 +9,9 @@ def login(request):
 def register(request):
     return render(request, 'main/register.html') ;
 
+def home(request):
+    return render(request, 'main/home.html') ;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+
 def tariff(request):
     return render(request, 'main/tariff.html') ;
 

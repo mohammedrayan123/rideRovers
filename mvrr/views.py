@@ -10,7 +10,10 @@ def register(request):
     return render(request, 'main/register.html') ;
 
 def home(request):
-    return render(request, 'main/home.html') ;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+    return render(request, 'main/home.html') ; 
+
+def booking(request):
+    return render(request, 'main/booking.html') ;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
 
 def tariff(request):
     return render(request, 'main/tariff.html') ;

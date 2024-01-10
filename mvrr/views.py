@@ -12,6 +12,9 @@ def register(request):
 def home(request):
     return render(request, 'main/home.html') ; 
 
+def profile(request):
+    return render(request, 'main/profile.html') ;
+
 def booking(request):
     return render(request, 'main/booking.html') ;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
 

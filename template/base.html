@@ -13,7 +13,7 @@
 </head>
 
 <body>
-  <header class="text-slate-200 body-font bg-gray-950" >
+  <header class="text-slate-200 body-font bg-gray-950">
     <div class="container mx-auto flex flex-wrap pl-5 flex-col md:flex-row items-center">
       <a class="flex title-font font-medium items-center text-slate-200 mb-2 md:mb-0" href="{% url 'index' %}">
         <!-- <svg xmlns="static/imgs/logo1.jpg" fill="none" stroke="currentColor" stroke-linecap="round"
@@ -31,12 +31,23 @@
         <a class="mr-5 hover:text-green-500" href="{% url 'contact' %}">Contact Us</a>
       </nav>
       <a href="{% url 'login' %}"><button
-          class="inline-flex items-center bg-gray-400 border-0 py-1 px-3 focus:outline-none hover:bg-gray-600 rounded text-base mt-4 md:mt-0">Login
-          &nbsp;<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            class="w-4 h-4 ml-1" viewBox="0 0 24 24">
-            <path d="M5 12h14M12 5l7 7-7 7"></path>
-          </svg>
+          class="inline-flex items-center bg-green-500 border-0 py-1 px-3 focus:outline-none hover:bg-green-700 rounded-2xl text-black hover:text-slate-100 mt-4 md:mt-0">Become
+          a Host
+          <!-- &nbsp;<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+          <path d="M5 12h14M12 5l7 7-7 7"></path>
+        </svg> -->
         </button></a>
+
+      <a href="{% url 'profile' %}">
+        <div class="relative m-5 w-10 h-10 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
+          <svg class="absolute w-12 h-12 text-gray-400 -left-1" fill="currentColor" viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd">
+            </path>
+          </svg>
+        </div>
+      </a>
 
     </div>
   </header>

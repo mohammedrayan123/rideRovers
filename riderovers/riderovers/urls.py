@@ -14,28 +14,54 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+# from django.contrib import admin
+# from django.urls import path
+# from mvrr.views import index,login,hlogin,register,hregister,home,profile,kyc,tariff,offer,location,contact,about,privacy,tc,help,booking
+
 from django.contrib import admin
 from django.urls import path
-from mvrr.views import index,login,hlogin,register,hregister,home,profile,kyc,tariff,offer,location,contact,about,privacy,tc,help,booking
+from mvrr.views import *
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("",view=login,name="login"),
+    path("", user_login, name="login"),
+    path("main/index", index, name="index"),
+    path("register/",user_register, name="user_register"),
     path("main/hlogin",view=hlogin,name="hlogin"),
-    path("main/index",index,name="index"),
-    path("main/register",view=register,name="register"),
     path("main/hregister",view=hregister,name="hregister"),
-    path("main/home",view=home,name="home"),
-    path("main/profile",view=profile,name="profile"),
+    path("home", home, name="home"),
+    path("profile", profile, name="profile"),
     path("main/kyc",view=kyc,name="kyc"),
-    path("main/booking",view=booking,name="booking"),
-    path("main/tariff",view=tariff,name="tariff"),
-    path("main/offer",view=offer,name="offer"),
-    path("main/location",view=location,name="location"),
-    path("main/contact",view=contact,name="contact"),
-    path("main/about",view=about,name="about"),
-    path("main/privacy",view=privacy,name="privacy"),
-    path("main/tc",view=tc,name="tc"),
-    path("main/help",view=help,name="help"),
-
+    path("booking", booking, name="booking"),
+    path("tariff", tariff, name="tariff"),
+    path("offer", offer, name="offer"),
+    path("location", location, name="location"),
+    path("contact", contact, name="contact"),
+    path("about", about, name="about"),
+    path("privacy", privacy, name="privacy"),
+    path("tc", tc, name="tc"),
+    path("help", help, name="help"),
 ]
+
+# urlpatterns = [
+#     path('admin/', admin.site.urls),
+#     path("",view=login,name="login"),
+#     path("main/hlogin",view=hlogin,name="hlogin"),
+#     path("main/index",index,name="index"),
+#     path("main/register",view=register,name="register"),
+#     path("main/hregister",view=hregister,name="hregister"),
+#     path("main/home",view=home,name="home"),
+#     path("main/profile",view=profile,name="profile"),
+#     path("main/kyc",view=kyc,name="kyc"),
+#     path("main/booking",view=booking,name="booking"),
+#     path("main/tariff",view=tariff,name="tariff"),
+#     path("main/offer",view=offer,name="offer"),
+#     path("main/location",view=location,name="location"),
+#     path("main/contact",view=contact,name="contact"),
+#     path("main/about",view=about,name="about"),
+#     path("main/privacy",view=privacy,name="privacy"),
+#     path("main/tc",view=tc,name="tc"),
+#     path("main/help",view=help,name="help"),
+
+# ]

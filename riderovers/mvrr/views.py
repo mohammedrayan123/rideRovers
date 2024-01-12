@@ -6,14 +6,23 @@ def index(request):
 def login(request):
     return render(request, 'main/login.html') ;
 
+def hlogin(request):
+    return render(request, 'main/hlogin.html') ;
+
 def register(request):
     return render(request, 'main/register.html') ;
+
+def hregister(request):
+    return render(request, 'main/hregister.html') ;
 
 def home(request):
     return render(request, 'main/home.html') ; 
 
 def profile(request):
     return render(request, 'main/profile.html') ;
+
+def kyc(request):
+    return render(request, 'main/kyc.html') ;
 
 def booking(request):
     return render(request, 'main/booking.html') ;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      

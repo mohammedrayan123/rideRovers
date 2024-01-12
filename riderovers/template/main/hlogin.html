@@ -5,8 +5,8 @@
 <body class="h-full">
   <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 dark:border dark:border-gray-700">
     <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-      <!-- <img class="mx-auto h-10 w-auto" src="static/imgs/logo2.png" alt="Your Company"> -->
-      <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900"> User Login
+     <!-- <img class="mx-auto h-10 w-auto" src="static/imgs/logo2.png" alt="Your Company"> -->
+      <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900"> Host Login
     </div>
 
     <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
@@ -40,16 +40,12 @@
       </form>
 
       <p class="mt-10 text-center text-sm text-gray-500">
-        New User?
-        <a href="{% url 'register' %}" class="font-semibold leading-6 text-green-500 hover:text-green-700">Click here to
+        New Host?
+        <a href="{% url 'hregister' %}" class="font-semibold leading-6 text-green-500 hover:text-green-700">Click here to
           Create Account</a>
       </p>
 
-      <p class="mt-10 text-center text-sm text-gray-500">
-        Are you a Host?
-        <a href="{% url 'hlogin' %}" class="font-semibold leading-6 text-green-500 hover:text-green-700">Click Here to
-          Login</a>
-      </p>
+      
     </div>
   </div>
 

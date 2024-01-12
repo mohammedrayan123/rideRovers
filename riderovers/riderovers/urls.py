@@ -16,23 +16,26 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from mvrr.views import index,login,register,home,profile,tariff,offer,location,contact,about,privacy,tc,help,booking
+from mvrr.views import index,login,hlogin,register,hregister,home,profile,kyc,tariff,offer,location,contact,about,privacy,tc,help,booking
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("",index,name="index"),
-    path("main/login.html",view=login,name="login"),
-    path("main/register.html",view=register,name="register"),
-    path("main/home.html",view=home,name="home"),
-    path("main/profile.html",view=profile,name="profile"),
-    path("main/booking.html",view=booking,name="booking"),
-    path("main/tariff.html",view=tariff,name="tariff"),
-    path("main/offer.html",view=offer,name="offer"),
-    path("main/location.html",view=location,name="location"),
-    path("main/contact.html",view=contact,name="contact"),
-    path("main/about.html",view=about,name="about"),
-    path("main/privacy.html",view=privacy,name="privacy"),
-    path("main/tc.html",view=tc,name="tc"),
-    path("main/help.html",view=help,name="help"),
+    path("",view=login,name="login"),
+    path("main/hlogin",view=hlogin,name="hlogin"),
+    path("main/index",index,name="index"),
+    path("main/register",view=register,name="register"),
+    path("main/hregister",view=hregister,name="hregister"),
+    path("main/home",view=home,name="home"),
+    path("main/profile",view=profile,name="profile"),
+    path("main/kyc",view=kyc,name="kyc"),
+    path("main/booking",view=booking,name="booking"),
+    path("main/tariff",view=tariff,name="tariff"),
+    path("main/offer",view=offer,name="offer"),
+    path("main/location",view=location,name="location"),
+    path("main/contact",view=contact,name="contact"),
+    path("main/about",view=about,name="about"),
+    path("main/privacy",view=privacy,name="privacy"),
+    path("main/tc",view=tc,name="tc"),
+    path("main/help",view=help,name="help"),
 
 ]

@@ -2,9 +2,15 @@
 {% load static %}
 
 {% block content %}
-<section class="text-gray-600 body-font h-screen" style="background-image: url(static/imgs/homebike2.jpg); background-size: cover;
-background-position: center center;
-background-repeat: no-repeat;">
+<style>
+  .first-info{
+      background-image: url( "{% static 'imgs/homebike2.jpg' %}");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+  }
+  </style>
+<section id="homesec" class="text-gray-600 body-font h-screen first-info">
   <div class="container px-5 py-24 mx-auto">
     <div class="flex flex-wrap ml-14 -m-4">
 

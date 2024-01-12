@@ -5,7 +5,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- <link rel="stylesheet" href="{% static 'styles/style.css' %}"> -->
+  <link rel="stylesheet" href="{% static 'styles/style.css' %}">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/forms@0.5.7/src/index.min.js"></script>
 
@@ -30,7 +30,7 @@
         <a class="mr-5 hover:text-green-500" href="{% url 'location' %}">Our Locations</a>
         <a class="mr-5 hover:text-green-500" href="{% url 'contact' %}">Contact Us</a>
       </nav>
-      <a href="{% url 'login' %}"><button
+      <a href="{% url 'hregister' %}"><button
           class="inline-flex items-center bg-green-500 border-0 py-1 px-3 focus:outline-none hover:bg-green-700 rounded-2xl text-black hover:text-slate-100 mt-4 md:mt-0">Become
           a Host
           <!-- &nbsp;<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -71,7 +71,7 @@
           <h2 class="title-font font-medium text-green-700 tracking-widest text-sm mb-3">COMPANY</h2>
           <nav class="list-none mb-10">
             <li>
-              <a class="text-slate-200 hover:text-green-500" href="main/about.html">About Us</a>
+              <a class="text-slate-200 hover:text-green-500" href="{% url 'about' %}">About Us</a>
             </li>
             <li>
               <a class="text-slate-200 hover:text-green-500">Blog</a>
@@ -87,7 +87,7 @@
           <h2 class="title-font font-medium text-green-700 tracking-widest text-sm mb-3">QUICK LINKS</h2>
           <nav class="list-none mb-10">
             <li>
-              <a class="text-slate-200 hover:text-green-500" href="main/offer.html">Offers</a>
+              <a class="text-slate-200 hover:text-green-500" href="{% url 'offer' %}">Offers</a>
             </li>
             <li>
               <a class="text-slate-200 hover:text-green-500">Riding Gears</a>
@@ -96,7 +96,7 @@
               <a class="text-slate-200 hover:text-green-500">Become Host</a>
             </li>
             <li>
-              <a class="text-slate-200 hover:text-green-500" href="main/help.html">Help & Support</a>
+              <a class="text-slate-200 hover:text-green-500" href="{% url 'help' %}">Help & Support</a>
             </li>
             <li>
               <a class="text-slate-200 hover:text-green-500">Refferal</a>
@@ -110,10 +110,10 @@
           <h2 class="title-font font-medium text-green-700 tracking-widest text-sm mb-3">POLICIES</h2>
           <nav class="list-none mb-10">
             <li>
-              <a class="text-slate-200 hover:text-green-500" href="main/privacy.html">Privacy Policy</a>
+              <a class="text-slate-200 hover:text-green-500" href="{% url 'privacy' %}">Privacy Policy</a>
             </li>
             <li>
-              <a class="text-slate-200 hover:text-green-500" href="main/tc.html">Terms & Conditions</a>
+              <a class="text-slate-200 hover:text-green-500" href="{% url 'tc' %}">Terms & Conditions</a>
             </li>
             <li>
               <a class="text-slate-200 hover:text-green-500">rideRover's Host Vehicles Policies</a>

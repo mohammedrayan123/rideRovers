@@ -28,6 +28,7 @@ urlpatterns = [
     path("", user_login, name="login"),
     path("main/index", index, name="index"),
     path("register/",user_register, name="user_register"),
+    path("logout/",logout_user, name="logout_user"),
     path("main/hlogin",view=hlogin,name="hlogin"),
     path("main/hregister",view=hregister,name="hregister"),
     path("home", home, name="home"),

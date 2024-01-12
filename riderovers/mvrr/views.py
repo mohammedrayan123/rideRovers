@@ -1,14 +1,24 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.urls import reverse
 from .models import UserProfile
 
 
-
+@login_required(login_url='login')
 def index(request):
-    return render(request, 'main/index.html') ;
+    auth = request.session['email']
+    if request.user.is_authenticated or auth:
+        return render(request, 'main/index.html') ;
+
+
+@login_required(login_url='login')
+def logout_user(request):
+    logout(request)
+    request.session.flush()  # Clear the session
+    return redirect('login')
 
 def home(request):
     return render(request, 'main/home.html') ; 
@@ -48,16 +58,15 @@ def kyc(request):
 
 def user_login(request):
     if request.method == 'POST':
-        email = request.POST['email']
-        password = request.POST['password']
+        email = request.POST.get('email')
+        password = request.POST.get('password')
         user = authenticate(request, username=email, password=password)
         if user is not None:
+            request.session['email'] = email  # Use 'session' instead of 'sessions'
             login(request, user)
-            print("Login : user_login")
+            print("Login: user_login")
             return redirect('index')
-        else:
-            pass
-
+    
     return render(request, 'main/login.html')
 
 

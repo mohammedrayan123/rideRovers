@@ -29,6 +29,7 @@
           <div class="mt-2">
             <input id="password" name="password" type="password" autocomplete="current-password" required
               class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6">
+              <input class="mt-4 m-1" type="checkbox" onclick="myFunction()">Show Password
           </div>
         </div>
 
@@ -48,6 +49,17 @@
       
     </div>
   </div>
+
+  <script>
+    function myFunction() {
+      var x = document.getElementById("password");
+      if (x.type === "password") {
+        x.type = "text";
+      } else {
+        x.type = "password";
+      }
+    }
+    </script>
 
 </body>
 

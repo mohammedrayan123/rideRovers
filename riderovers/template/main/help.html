@@ -2,66 +2,55 @@
 {% load static %}
 
 {% block content %}
-<!-- Container for demo purpose -->
-<div class="container my-24 mx-auto md:px-6">
-  <!-- Section: Design Block -->
-  <section class="mb-32">
-    <!-- Jumbotron -->
-    <div class="container mx-auto text-center lg:text-left xl:px-32">
-      <div class="flex grid items-center lg:grid-cols-2">
-        <div class="mb-12 lg:mb-0">
-          <div
-            class="block rounded-lg bg-[hsla(0,0%,100%,0.55)] px-6 py-12 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-[hsla(0,0%,5%,0.55)] dark:shadow-black/20 md:px-12 lg:-mr-14 backdrop-blur-[30px]">
-            <h3 class="mb-3 text-2xl font-bold">
-              We know how valuable your time is
-            </h3>
-            <h5 class="mb-12 text-lg font-bold text-primary dark:text-primary-400 lg:mb-10 xl:mb-12">
-              Let us answer your questions
-            </h5>
-
-            <p class="mb-4 font-bold">
-              Anim pariatur cliche reprehenderit?
-            </p>
-            <p class="mb-6 text-gray-500 dark:text-neutral-300">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt
-              autem numquam dolore molestias aperiam culpa alias veritatis
-              architecto eos, molestiae vitae ex eligendi libero eveniet
-              dolorem, doloremque rem aliquid perferendis.
-            </p>
-
-            <p class="mb-4 font-bold">
-              Non cupidatat skateboard dolor brunch?
-            </p>
-            <p class="mb-6 text-gray-500 dark:text-neutral-300">
-              Distinctio corporis, iure facere ducimus quos consectetur ipsa
-              ut magnam autem doloremque ex! Id, sequi. Voluptatum magnam
-              sed fugit iusto minus et suscipit? Minima sunt at nulla
-              tenetur, numquam unde quod modi magnam ab deserunt ipsam sint
-              aliquid dolores libero repellendus cupiditate mollitia quidem
-              dolorem odit
-            </p>
-
-            <p class="mb-4 font-bold">
-              Praesentium voluptatibus temporibus consequatur non
-              aspernatur?
-            </p>
-            <p class="text-gray-500 dark:text-neutral-300">
-              Minima sunt at nulla tenetur, numquam unde quod modi magnam ab
-              deserunt ipsam sint aliquid dolores libero repellendus
-              cupiditate mollitia quidem dolorem.
-            </p>
-          </div>
+<section class="bg-[#1D1D1D] text-gray-100 py-32 min-h-screen">
+  <div class="container flex flex-col justify-center p-4 mx-auto md:p-8">
+    <h2 class="mb-12 text-4xl font-bold leadi text-center sm:text-5xl">Frequently Asked Questions</h2>
+    <div class="flex flex-col divide-y sm:px-8 lg:px-12 xl:px-32 divide-gray-700">
+      <details>
+        <summary class="py-2 outline-none cursor-pointer focus:underline">How can I place an order?</summary>
+        <div class="px-4 pb-4">
+          <p>You can easily place an order on our website by browsing our product catalog, selecting the items you want, and adding them to your cart. Then, proceed to checkout, where you can provide your shipping and payment information to complete the order.</p>
         </div>
-
-        <div>
-          <img src="https://mdbcdn.b-cdn.net/img/new/ecommerce/vertical/075.jpg"
-            class="w-full rounded-lg shadow-lg dark:shadow-black/20" alt="" />
+      </details>
+      <details>
+        <summary class="py-2 outline-none cursor-pointer focus:underline">What payment methods do you accept?</summary>
+        <div class="px-4 pb-4">
+          <p>We accept various payment methods, including credit cards, debit cards, net banking, and mobile wallet payments. You can choose the payment option that is most convenient for you during the checkout process.</p>
         </div>
-      </div>
+      </details>
+      <details>
+        <summary class="py-2 outline-none cursor-pointer focus:underline">Will All Types of bikes be available?</summary>
+        <div class="px-4 pb-4">
+          <p>It depends on your location. Typically we are trying hard to offer all types of bikes in all the location available. You will receive updates of the bike you booked.</p>
+        </div>
+      </details>
+      <details>
+        <summary class="py-2 outline-none cursor-pointer focus:underline">Can I cancel a booking if I'm not satisfied?</summary>
+        <div class="px-4 pb-4">
+          <p>Yes, we have a hassle-free cancellation policy. If you are not satisfied with your purchase, you can initiate a cancellation request within 3 hours of booking. Please contact our customer support at <a href="" class="underline">riderovers134@gmail.com</a> for assistance.</p>
+        </div>
+      </details>
+      <details>
+        <summary class="py-2 outline-none cursor-pointer focus:underline">Do you offer international booking?</summary>
+        <div class="px-4 pb-4">
+          <p>Currently, we only provide our services within India. However, we may consider expanding our services options to international locations in the future. Please stay updated with our website for any changes.</p>
+        </div>
+      </details>
+      <details>
+        <summary class="py-2 outline-none cursor-pointer focus:underline">What is your customer support contact?</summary>
+        <div class="px-4 pb-4">
+          <p>If you have any questions, concerns, or need assistance, you can reach our customer support team at 8105275627 during our business hours, Monday to Saturday from 10 am to 6 pm. You can also contact us via email at <a href="" class="underline">riderovers134@gmail.com</a>.</p>
+        </div>
+      </details>
+      <details>
+        <summary class="py-2 outline-none cursor-pointer focus:underline">What are your terms and conditions?</summary>
+        <div class="px-4 pb-4">
+          <p>You can find our detailed terms and conditions by visiting our 
+            <a href="{% url 'tc' %}" class="underline">Terms & conditions</a> 
+            page on our website. It includes information about our policies, user guidelines, and more.</p>
+        </div>
+      </details>
     </div>
-    <!-- Jumbotron -->
-  </section>
-  <!-- Section: Design Block -->
-</div>
-<!-- Container for demo purpose -->
+  </div>
+</section>
 {% endblock content %}

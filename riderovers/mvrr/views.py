@@ -77,6 +77,7 @@ def user_register(request):
         lname = request.POST.get('lname', '')
         email = request.POST.get('email', '')
         phone = request.POST.get('phone', '')
+        gender = request.POST.get('gender', '')
         dob = request.POST.get('dob', '')
         addr = request.POST.get('addr', '')
         password = request.POST.get('password', '')
@@ -87,14 +88,14 @@ def user_register(request):
         if password != confirm_password:
             messages.error(request, "Passwords do not match.")
             print("Not")
-            return redirect(reverse('user_register'))
+            return redirect('user_register')
             
 
         # Check if a user with the given email already exists
         if User.objects.filter(email=email).exists():
             messages.error(request, "User with this email already exists.")
             print("yes exist")
-            return redirect(reverse('user_register'))
+            return redirect('user_register')
 
         # Create and save the user
         user = User.objects.create_user(
@@ -105,9 +106,14 @@ def user_register(request):
             last_name=lname,
         )
 
+        print("User profile table inseration started")
         # Create and save the user profile
         profile = UserProfile(
             user=user,
+            fname = fname,
+            lname = lname,
+            email = email,
+            gender = gender, 
             phone=phone,
             dob=dob,
             addr=addr,
@@ -115,7 +121,7 @@ def user_register(request):
         profile.save()
         print("save")
         messages.success(request, "Registration successful. You can now log in.")
-        return redirect(reverse('login'))
+        return redirect('login')
 
     return render(request, 'main/register.html')
 

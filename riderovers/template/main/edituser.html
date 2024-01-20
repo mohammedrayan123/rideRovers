@@ -55,6 +55,8 @@
 <!-- component -->
 <div class="min-h-screen p-6 bg-gray-100 flex items-center justify-center">
     <div class="container max-w-screen-lg mx-auto">
+        <form method="POST" action="{% url 'edit-user' user_profile_info.user_id %}">
+            {% csrf_token %}
         <div>
             <h2 class="font-semibold text-xl text-gray-600">Responsive Form</h2>
             <p class="text-gray-500 mb-6">Form is mobile responsive. Give it a try.</p>
@@ -80,7 +82,6 @@
                                         Name</label>
 
                                     <input type="text" id="fname" name="fname" value=" {{user_profile_info.fname}}"
-                                        disabled
                                         class="block w-full rounded-md border-0 py-1.5 py-1 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 bg-gray-50 placeholder:text-gray-400 sm:text-sm sm:leading-6">
                                 </div>
                             </div>
@@ -90,7 +91,6 @@
                                     <label for="email" class="block mb-2 text-sm font-medium text-green-800"> Last
                                         Name</label>
                                     <input type="text" id="lname" name="lname" value=" {{user_profile_info.lname}}"
-                                        disabled
                                         class="block w-full rounded-md border-0 py-1.5 py-1 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 bg-gray-50 placeholder:text-gray-400 sm:text-sm sm:leading-6">
                                 </div>
                             </div>
@@ -100,8 +100,8 @@
                                     <label for="email" class="block mb-2 text-sm font-medium text-green-800">Your
                                         email</label>
                                     <div class="mt-2">
-                                        <input id="email" name="email" type="email" autocomplete="email" required
-                                            value=" {{user_profile_info.email}}" disabled
+                                        <input id="email" name="email" type="email" autocomplete="email"
+                                            value=" {{user_profile_info.email}}"
                                             class="block w-full rounded-md border-0 py-1.5 py-1 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6">
                                     </div>
                                 </div>
@@ -113,7 +113,7 @@
                                         class="block mb-2 text-sm font-medium text-green-800">Gender</label>
                                     <div class="mt-2">
                                         <input id="gender" name="gender" type="gender" autocomplete="gender"
-                                            value=" {{user_profile_info.gender}}" disabled
+                                            value=" {{user_profile_info.gender}}"
                                             class="block w-full rounded-md border-0 py-1.5 py-1 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6">
                                     </div>
                                 </div>
@@ -125,7 +125,7 @@
                                         Number</label>
                                     <div class="mt-2">
                                         <input id="phone" name="phone" type="number" autocomplete="phone"
-                                            value="{{user_profile_info.phone}}" disabled
+                                            value="{{user_profile_info.phone}}"
                                             class="block w-full rounded-md border-0 py-1.5 py-1 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6">
                                     </div>
                                 </div>
@@ -137,7 +137,7 @@
                                         Birth</label>
                                     <div class="mt-2">
                                         <input id="dob" name="dob" type="dob" autocomplete="dob"
-                                            value="{{user_profile_info.dob}}" disabled
+                                            value="{{user_profile_info.dob}}"
                                             class="block w-full rounded-md border-0 py-1.5 py-1 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6">
                                     </div>
 
@@ -201,7 +201,7 @@
                                     <label class="leading-7 text-sm text-green-800">Address</label>
                                     <div class="mt-2">
                                         <input id="addr" name="addr" type="addr" autocomplete="addr"
-                                            value="{{user_profile_info.addr}}" disabled
+                                            value="{{user_profile_info.addr}}"
                                             class="block w-full rounded-md border-0 py-1.5 py-1 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6">
                                     </div>
                                 </div>
@@ -247,13 +247,13 @@
 
                             <div class="md:col-span-5 text-right">
                                 <div class="inline-flex items-end">
-                                    <a href="{% url 'edituser' request.user.id %}">
-                                    <button type="submit"
-                                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-2 rounded">Edit</button></a>
-                                    <a href="{% url 'kyc' %}">
-                                        <button
-                                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-2 rounded">Copmlete
-                                            KYC</button>
+                                    
+                                        <button type="submit" class="confirmation"
+                                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-2 rounded">Submit</button>
+                            
+                                    <a href="{% url 'delete-user' user_profile_info.user_id %}">
+                                        <button type="submit"
+                                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-2 rounded">Delete</button>
                                     </a>
                                 </div>
                             </div>
@@ -263,7 +263,7 @@
                 </div>
             </div>
         </div>
-
+    </form>
 
     </div>
 </div>

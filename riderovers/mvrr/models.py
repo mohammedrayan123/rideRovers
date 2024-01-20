@@ -1,7 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import User
+import datetime
+import uuid
 
 class UserProfile(models.Model):
+    userid=models.UUIDField(auto_created=True, primary_key=True,default=uuid.uuid4)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     fname = models.CharField(max_length=15, null=False)
     lname = models.CharField(max_length=15, null=False)

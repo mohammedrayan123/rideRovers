@@ -9,8 +9,7 @@ from .models import UserProfile
 
 @login_required(login_url='login')
 def index(request):
-    auth = request.session['email']
-    if request.user.is_authenticated or auth:
+    if request.user.is_authenticated:
         return render(request, 'main/index.html') ;
 
 
@@ -24,10 +23,32 @@ def home(request):
     return render(request, 'main/home.html') ; 
 
 def profile(request):
-    return render(request, 'main/profile.html') ;
+    print(request.user.id)
+    user_profile_info = UserProfile.objects.get(user_id=request.user.id)
+    return render(request, 'main/profile.html',{'user_profile_info':user_profile_info}) ;
 
 def booking(request):
-    return render(request, 'main/booking.html') ;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+    return render(request, 'main/booking.html') ;
+
+def edituser(request,id):
+    user_profile_info = UserProfile.objects.get(user_id=id)
+    if request.POST:
+        edited_fname = request.POST.get('fname').strip()
+        edited_lname = request.POST.get('lname').strip()
+        # description = request.POST['desc']
+        user_profile_info.fname=edited_fname
+        user_profile_info.lname=edited_lname
+        # task.taskTitle=new_task
+        # task.taskDesc=description
+        user_profile_info.save()
+        return redirect('profile')
+    # return render(request,'todolist2/edit.html',context={'task':task})
+    return render(request, 'main/edituser.html',context={'user_profile_info':user_profile_info}) ; 
+
+def deleteuser(request,id):
+    user_profile_info = UserProfile.objects.get(user_id=id)
+    user_profile_info.delete()
+    return redirect('profile')                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
 
 def tariff(request):
     return render(request, 'main/tariff.html') ;

@@ -248,7 +248,7 @@
                             <div class="md:col-span-5 text-right">
                                 <div class="inline-flex items-end">
                                     
-                                        <button type="submit"
+                                        <button type="submit" 
                                             class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-2 rounded">Submit</button>
                             
                                     <a href="{% url 'delete-user' user_profile_info.user_id %}">
@@ -256,6 +256,7 @@
                                             class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-2 rounded">Delete</button>
                                     </a>
                                 </div>
+                                <p id="g"></p>
                             </div>
 
                         </div>
@@ -267,5 +268,18 @@
 
     </div>
 </div>
+
+<!-- <script>
+    function geek() {
+        let doc;
+        let result = confirm("Press Ok to Save Changes");
+        if (result == true) {
+            doc = "Details Updated Successfully";
+        } else {
+            doc = "Cancel was pressed.";
+        }
+        document.getElementById("g").innerHTML = doc;
+    }
+</script> -->
 
 {% endblock content %}

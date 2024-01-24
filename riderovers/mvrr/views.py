@@ -19,25 +19,38 @@ def logout_user(request):
     request.session.flush()  # Clear the session
     return redirect('login')
 
+@login_required(login_url='login')
 def home(request):
     return render(request, 'main/home.html') ; 
 
+@login_required(login_url='login')
 def profile(request):
     print(request.user.id)
     user_profile_info = UserProfile.objects.get(user_id=request.user.id)
     return render(request, 'main/profile.html',{'user_profile_info':user_profile_info}) ;
 
+@login_required(login_url='login')
 def booking(request):
     return render(request, 'main/booking.html') ;
 
+@login_required(login_url='login')
 def edituser(request,id):
     user_profile_info = UserProfile.objects.get(user_id=id)
     if request.POST:
         edited_fname = request.POST.get('fname').strip()
         edited_lname = request.POST.get('lname').strip()
+        edited_email = request.POST.get('email').strip()
+        edited_phone = request.POST.get('phone').strip()
+        # edited_dob = request.POST.get('dob').strip()
+        edited_addr = request.POST.get('addr').strip()
         # description = request.POST['desc']
         user_profile_info.fname=edited_fname
         user_profile_info.lname=edited_lname
+        user_profile_info.email=edited_email
+        user_profile_info.phone=edited_phone
+        # user_profile_info.dob=edited_dob
+        user_profile_info.addr=edited_addr
+        # user_profile_info.lname=edited_lname
         # task.taskTitle=new_task
         # task.taskDesc=description
         user_profile_info.save()
@@ -48,7 +61,14 @@ def edituser(request,id):
 def deleteuser(request,id):
     user_profile_info = UserProfile.objects.get(user_id=id)
     user_profile_info.delete()
-    return redirect('profile')                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+    return redirect('index') 
+
+@login_required(login_url='login')
+def owner(request):
+    return render(request, 'main/ownerboard.html') ; 
+
+def adminboard(request):
+    return render(request, 'main/adminboard.html') ;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
 
 def tariff(request):
     return render(request, 'main/tariff.html') ;
@@ -74,6 +94,7 @@ def tc(request):
 def help(request):
     return render(request, 'main/help.html') ;
 
+@login_required(login_url='login')
 def kyc(request):
     return render(request, 'main/kyc.html') ;
 

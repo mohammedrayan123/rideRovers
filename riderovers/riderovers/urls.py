@@ -36,6 +36,8 @@ urlpatterns = [
     path("editprofile/<str:id>", edituser, name="edituser"),
     path("editprofile/<str:id>", edituser, name="edit-user"),
     path('delete/<str:id>',deleteuser,name='delete-user'),
+    path("owner-dashboard",view=owner,name="owner"),
+    path("admin-den",view=adminboard,name="adminboard"),
     path("main/kyc",view=kyc,name="kyc"),
     path("booking", booking, name="booking"),
     path("tariff", tariff, name="tariff"),

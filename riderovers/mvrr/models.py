@@ -17,3 +17,14 @@ class UserProfile(models.Model):
 
     def _str_(self):
         return self.user.username
+    
+# class kyc(models.Model):
+#     userid = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+#     licenseno = models.CharField(max_length=15, null=False)
+#     idno = models.CharField(max_length=15, null=False)
+    
+#     @property
+#     def userid(self):
+#         return self.userid.userid
+    
+    

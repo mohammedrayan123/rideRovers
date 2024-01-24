@@ -151,6 +151,19 @@
     </section>
 
     <script>
+        function geek() {
+            let doc;
+            let result = confirm("Press Ok to Continue");
+            if (result == true) {
+                doc = "OK was pressed.";
+            } else {
+                doc = "Cancel was pressed.";
+            }
+            document.getElementById("g").innerHTML = doc;
+        }
+    </script>
+
+    <script>
         function myFunction() {
           var x = document.getElementById("password");
           if (x.type === "password") {

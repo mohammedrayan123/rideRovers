@@ -18,6 +18,23 @@
                     <form class="space-y-4 md:space-y-6" action="{% url 'user_register' %}" method="post">
                         <!-- <div class="lg:w-1/2 md:w-2/3 mx-auto"> -->
                             {% csrf_token %}
+
+                            <div class="mt-4">
+                                <label for="user_type" class="block text-sm font-medium text-gray-700">Select Account Type:</label>
+                                <div class="relative">
+                                    <select id="user_type" name="user_type" class="block appearance-none w-full bg-white border border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:border-green-500 focus:ring focus:ring-green-200">
+                                        <option value="user" class="text-green-500">User</option>
+                                        <option value="host" class="text-blue-500">Host</option>
+                                    </select>
+                                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                        <!-- Use an icon or custom design for the dropdown arrow -->
+                                        <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0l4 4a1 1 0 001.414 0l4-4a1 1 0 011.414 1.414l-5 5a1 1 0 01-1.414 0l-5-5a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+
                         <div class="flex flex-wrap -m-2">
                             <div class="p-2 w-1/2">
                                 <div class="relative">

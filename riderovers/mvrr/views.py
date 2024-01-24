@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.urls import reverse
 from .models import UserProfile
+import uuid
 
 
 @login_required(login_url='login')
@@ -100,15 +101,26 @@ def kyc(request):
 
 def user_login(request):
     if request.method == 'POST':
-        email = request.POST.get('email')
-        password = request.POST.get('password')
+        email = request.POST.get('email', '')
+        password = request.POST.get('password', '')
+        user_type = request.POST.get('user_type', '')
+
         user = authenticate(request, username=email, password=password)
+
         if user is not None:
-            request.session['email'] = email  # Use 'session' instead of 'sessions'
-            login(request, user)
-            print("Login: user_login")
-            return redirect('index')
-    
+            user_profile = user.userprofile
+
+            if user_type == 'user' and not user_profile.is_host:
+                login(request, user)
+                return redirect('index')
+            elif user_type == 'host' and user_profile.is_host:
+                login(request, user)
+                return redirect('owner')
+            else:
+                messages.error(request, f"No {user_type.capitalize()} account found with this email.")
+        else:
+            messages.error(request, "Invalid email or password.")
+
     return render(request, 'main/login.html')
 
 
@@ -124,20 +136,27 @@ def user_register(request):
         addr = request.POST.get('addr', '')
         password = request.POST.get('password', '')
         confirm_password = request.POST.get('confirm-password', '')
-        
 
         # Check if passwords match
         if password != confirm_password:
             messages.error(request, "Passwords do not match.")
-            print("Not")
+            print("Passwords do not match")
             return redirect('user_register')
-            
 
         # Check if a user with the given email already exists
         if User.objects.filter(email=email).exists():
             messages.error(request, "User with this email already exists.")
-            print("yes exist")
+            print("User with this email already exists")
             return redirect('user_register')
+
+        # Retrieve user type from the form data
+        user_type = request.POST.get('user_type', '')
+
+        # Print user type for debugging
+        print(f"User type: {user_type}")
+
+        # Set is_host based on user type
+        is_host = (user_type == 'host')
 
         # Create and save the user
         user = User.objects.create_user(
@@ -148,30 +167,33 @@ def user_register(request):
             last_name=lname,
         )
 
-        print("User profile table inseration started")
         # Create and save the user profile
         profile = UserProfile(
             user=user,
-            fname = fname,
-            lname = lname,
-            email = email,
-            gender = gender, 
+            fname=fname,
+            lname=lname,
+            email=email,
+            gender=gender,
             phone=phone,
             dob=dob,
             addr=addr,
+            is_host=is_host,  # Set is_host field
         )
         profile.save()
-        print("save")
+
+        print("User profile table insertion started")
+        print(f"is_host: {is_host}")
+
         messages.success(request, "Registration successful. You can now log in.")
         return redirect('login')
 
     return render(request, 'main/register.html')
 
-def hlogin(request):
-    return render(request, 'main/hlogin.html') ;
+# def hlogin(request):
+#     return render(request, 'main/hlogin.html') ;
 
-def hregister(request):
-    return render(request, 'main/hregister.html') ;
+# def hregister(request):
+#     return render(request, 'main/hregister.html') ;
 
 
 

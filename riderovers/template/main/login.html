@@ -13,6 +13,22 @@
       <form class="space-y-6" action="#" method="POST">
         {% csrf_token %}
 
+        <div class="mt-4">
+          <label for="user_type" class="block text-sm font-medium text-gray-700">Select Login Type:</label>
+          <div class="relative">
+              <select id="user_type" name="user_type" class="block appearance-none w-full bg-white border border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:border-green-500 focus:ring focus:ring-green-200">
+                  <option value="user" class="text-green-500">User</option>
+                  <option value="host" class="text-blue-500">Host</option>
+              </select>
+              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                  <!-- Use an icon or custom design for the dropdown arrow -->
+                  <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0l4 4a1 1 0 001.414 0l4-4a1 1 0 011.414 1.414l-5 5a1 1 0 01-1.414 0l-5-5a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+              </div>
+          </div>
+      </div>
+
         <div>
           <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
           <div class="mt-2">
@@ -49,11 +65,7 @@
           Create Account</a>
       </p>
 
-      <p class="mt-10 text-center text-sm text-gray-500">
-        Are you a Host?
-        <a href="{% url 'hlogin' %}" class="font-semibold leading-6 text-green-500 hover:text-green-700">Click Here to
-          Login</a>
-      </p>
+
     </div>
   </div>
 

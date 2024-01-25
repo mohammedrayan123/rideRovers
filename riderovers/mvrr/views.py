@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.urls import reverse
-from .models import UserProfile
+from .models import UserProfile, KYCData
 import uuid
 
 
@@ -95,10 +95,43 @@ def tc(request):
 def help(request):
     return render(request, 'main/help.html') ;
 
+def kyc_done(request):
+    return render(request, 'main/kyc_done.html') ;
+
 @login_required(login_url='login')
 def kyc(request):
-    return render(request, 'main/kyc.html') ;
+    user = request.user
 
+    # Check if KYC has already been completed for the user
+    existing_kyc = KYCData.objects.filter(user=user).first()
+    if existing_kyc:
+        # Redirect to a page indicating that KYC has already been completed
+        return render(request, 'main/kyc_done.html')
+
+    if request.method == 'POST':
+        fname = request.POST.get('fname')
+        lname = request.POST.get('lname')
+        email = request.POST.get('email')
+        licenseno = request.POST.get('licenseno')
+        idno = request.POST.get('idno')
+
+        # Save KYC data to the database
+        kyc_data = KYCData(
+            user=user,
+            fname=fname,
+            lname=lname,
+            email=email,
+            licenseno=licenseno,
+            idno=idno,
+            licensepic=request.FILES.get('licensepic'),  # Handle file upload
+            idpic=request.FILES.get('idpic'),  # Handle file upload
+        )
+        kyc_data.save()
+
+        # Redirect to a success page or any other desired page after saving the data
+        return redirect('kyc_done')  # Change 'success_page' to the appropriate URL
+
+    return render(request, 'main/kyc.html')
 def user_login(request):
     if request.method == 'POST':
         email = request.POST.get('email', '')

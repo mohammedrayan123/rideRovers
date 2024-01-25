@@ -48,6 +48,7 @@ urlpatterns = [
     path("privacy", privacy, name="privacy"),
     path("tc", tc, name="tc"),
     path("help", help, name="help"),
+    path("kyc_done", kyc_done, name="kyc_done"),
 ]
 
 # urlpatterns = [

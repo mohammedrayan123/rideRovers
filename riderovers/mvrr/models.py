@@ -19,13 +19,15 @@ class UserProfile(models.Model):
         return self.user.username
 
     
-# class kyc(models.Model):
-#     userid = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
-#     licenseno = models.CharField(max_length=15, null=False)
-#     idno = models.CharField(max_length=15, null=False)
-    
-#     @property
-#     def userid(self):
-#         return self.userid.userid
-    
-    
+class KYCData(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    fname = models.CharField(max_length=50)
+    lname = models.CharField(max_length=50)
+    email = models.EmailField()
+    licenseno = models.CharField(max_length=20)
+    idno = models.CharField(max_length=20)
+    licensepic = models.ImageField(upload_to='kyc_uploads/')
+    idpic = models.ImageField(upload_to='kyc_uploads/')
+
+    def __str__(self):
+        return f"{self.fname} {self.lname} - {self.user.username}"

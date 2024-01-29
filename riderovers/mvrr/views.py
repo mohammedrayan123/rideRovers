@@ -65,8 +65,17 @@ def deleteuser(request,id):
     return redirect('index') 
 
 @login_required(login_url='login')
-def owner(request):
-    return render(request, 'main/ownerboard.html') ; 
+def host(request):
+    return render(request, 'main/hostboard.html') ; 
+
+def hprofile(request):
+        print(request.user.id)
+        user_profile_info = UserProfile.objects.get(user_id=request.user.id)
+        return render(request, 'main/hostprofile.html',{'user_profile_info':user_profile_info}) ;
+        return render(request, '') ;
+    
+def bike(request):
+    return render(request, 'main/bikereg.html') ;
 
 def adminboard(request):
     return render(request, 'main/adminboard.html') ;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  

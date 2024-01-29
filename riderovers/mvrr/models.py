@@ -33,17 +33,18 @@ class KYCData(models.Model):
         return f"{self.fname} {self.lname} - {self.user.username}"
     
     
-# class bikedata(models.Model):
-#     user = models.ForeignKey(User, on_delete=models.CASCADE)
-#     onrname = models.CharField(max_length=50)
-#     regno = models.CharField(max_length=50)
-#     company = models.CharField(max_length=50)
-#     bikename = models.CharField(max_length=50)
-#     color = models.CharField(max_length=50)
-#     chessis_no = models.CharField(max_length=50)
-#     price = models.CharField(max_length=20)
-#     dop = models.DateField(blank=True, null=True)
-#     bikepic = models.ImageField(upload_to='kyc_uploads/')
+class BikeData(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    bikeid = models.UUIDField(auto_created=True, primary_key=True, default=uuid.uuid4)
+    onrname = models.CharField(max_length=50)
+    regno = models.CharField(max_length=50)
+    company = models.CharField(max_length=50)
+    bikename = models.CharField(max_length=50)
+    color = models.CharField(max_length=50)
+    chassis_no = models.CharField(max_length=50)
+    price = models.CharField(max_length=20)
+    dop = models.DateField(blank=True, null=True)
+    bikepic = models.ImageField(upload_to='bike_uploads/')
 
-#     def __str__(self):
-#         return f"{self.fname} {self.lname} - {self.user.username}"
+    def __str__(self):
+        return f"{self.onrname} - {self.user.username}"

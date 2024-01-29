@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.urls import reverse
-from .models import UserProfile, KYCData
+from .models import *
 import uuid
 
 
@@ -73,9 +73,42 @@ def hprofile(request):
         user_profile_info = UserProfile.objects.get(user_id=request.user.id)
         return render(request, 'main/hostprofile.html',{'user_profile_info':user_profile_info}) ;
         return render(request, '') ;
+
+# def bike(request):
+#     return render(request, 'main/hostboard.html') ;
     
-def bike(request):
-    return render(request, 'main/bikereg.html') ;
+def bike(request):    
+    user = request.user
+
+    if request.method == 'POST':
+        onrname = request.POST.get('onrname')
+        regno = request.POST.get('regno')
+        company = request.POST.get('company')
+        bikename = request.POST.get('bikename')
+        color = request.POST.get('color')
+        chassis_no = request.POST.get('chassis_no')
+        price = request.POST.get('price')
+        dop = request.POST.get('dop')
+
+        # Save KYC data to the database
+        bikedata = BikeData(
+            user=user,
+            onrname=onrname,
+            regno=regno,
+            company=company,
+            bikename=bikename,
+            color=color,
+            chassis_no=chassis_no,
+            price=price,
+            dop=dop,
+            bikepic=request.FILES.get('bikepic'),  # Handle file upload
+        )
+        bikedata.save()
+
+        # Redirect to a success page or any other desired page after saving the data
+        return redirect('bike')  # Change 'success_page' to the appropriate URL
+
+    return render(request, 'main/bikereg.html')
 
 def adminboard(request):
     return render(request, 'main/adminboard.html') ;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
@@ -157,7 +190,7 @@ def user_login(request):
                 return redirect('index')
             elif user_type == 'host' and user_profile.is_host:
                 login(request, user)
-                return redirect('owner')
+                return redirect('host')
             else:
                 messages.error(request, f"No {user_type.capitalize()} account found with this email.")
         else:

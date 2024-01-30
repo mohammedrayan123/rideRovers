@@ -6,6 +6,7 @@ from django.contrib import messages
 from django.urls import reverse
 from .models import *
 import uuid
+# from datetime import datetime
 
 
 @login_required(login_url='login')
@@ -22,7 +23,9 @@ def logout_user(request):
 
 @login_required(login_url='login')
 def home(request):
-    return render(request, 'main/home.html') ; 
+    bikedata_info = BikeData.objects.all()
+    return render(request, 'main/home.html',{'bikedata_info':bikedata_info}) ;
+    # return render(request, 'main/home.html') ; 
 
 @login_required(login_url='login')
 def profile(request):
@@ -263,6 +266,25 @@ def user_register(request):
         return redirect('login')
 
     return render(request, 'main/register.html')
+
+# def home1(request):
+#     if request.method == 'POST':
+#         # Assuming the form fields are named 'pickupdate', 'pickuptime', 'dropdate', 'droptime'
+#         pickupdate_str = request.POST.get('pickupdate')
+#         pickuptime_str = request.POST.get('pickuptime')
+#         dropdate_str = request.POST.get('dropdate')
+#         droptime_str = request.POST.get('droptime')
+
+#         # Combine date and time strings to create datetime objects
+#         pickup_datetime = datetime.strptime(f'{pickupdate_str} {pickuptime_str}', '%Y-%m-%d %H:%M')
+#         drop_datetime = datetime.strptime(f'{dropdate_str} {droptime_str}', '%Y-%m-%d %H:%M')
+
+#         # Calculate duration
+#         duration = drop_datetime - pickup_datetime
+
+#         # Pass the duration to the context
+#         context = {'duration': duration}
+#         return render(request, 'main/home.html',context)
 
 # def hlogin(request):
 #     return render(request, 'main/hlogin.html') ;

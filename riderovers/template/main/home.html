@@ -3,23 +3,61 @@
 
 {% block content %}
 
+<style>
+    @keyframes moveText {
+        0% {
+            transform: translateX(-100%);
+        }
+
+        100% {
+            transform: translateX(100%);
+        }
+    }
+
+    .duration-container {
+        overflow: hidden;
+    }
+
+    .duration-text {
+        display: inline-block;
+        white-space: nowrap;
+        animation: moveText 5s linear infinite;
+        /* Adjust the duration as needed */
+    }
+</style>
+
+<div class="text-black-50 w-full body-font" style="background-color: rgb(130, 250, 130);">
+    <div class="container py-4 duration-container">
+        {% if duration %}
+        <p class="text-lg text-center text-gray-700">
+            <span class="duration-text">Your selected duration: {{ duration }}</span>
+        </p>
+        {% endif %}
+           
+    </div>
+</div>
+
+<!-- <form method="post" action="{% url 'booking' %}"> -->
+
 <section class="text-gray-600 body-font">
     <div class="container px-5 py-24 mx-auto">
         <div class="flex flex-wrap -m-4">
-            <div class="lg:w-1/4 md:w-1/2 p-4 w-full border p-5">
+            {% for bike in bikedata_info %}
+            <div class="lg:w-1/4 md:w-1/2 p-4 w-full border p-5 mx-2">
                 <a class="block relative h-48 rounded overflow-hidden">
                     <img alt="ecommerce" class="object-cover object-center w-full h-full block"
                         src="{% static 'imgs\Royal-Enfield-Classic-350.jpg' %}">
                 </a>
                 <div class="mt-4 ">
-                    <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">CLASSIC</h3>
+                    <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">{{bike.biketype}}</h3>
 
                     <!-- <button class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Book</button> -->
-                    <h2 class="text-gray-900 title-font text-lg font-medium">Royal Enfield Classic 350</h2>
-                    <p class="mt-1">₹1200.00</p>
+                    <h2 class="text-gray-900 title-font text-lg font-medium">{{bike.company}} {{bike.bikename}}</h2>
+                    <p class="mt-1">₹ {{ bike.price }}.00</p>
                     <a class="mt-3 text-indigo-500 inline-flex items-center" href="{% url 'booking' %}">
-                        <button
-                            class="inline-flex w-80 items-center justify-center text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-700 rounded">Rent Now
+                        <button type="submit"
+                            class="inline-flex w-80 items-center justify-center text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-700 rounded">Rent
+                            Now
                             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                 stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
                                 <path d="M5 12h14M12 5l7 7-7 7"></path>
@@ -27,15 +65,18 @@
                         </button>
                     </a>
                 </div>
+                
             </div>
-            <div class="lg:w-1/4 md:w-1/2 p-4 w-full border p-5">
+            {% endfor %}
+            
+            <!-- <div class="lg:w-1/4 md:w-1/2 p-4 w-full border p-5">
                 <a class="block relative h-48 rounded overflow-hidden">
                     <img alt="ecommerce" class="object-cover object-center w-full h-full block"
                         src="{% static 'imgs\Pulsar NS 200.jpg' %}">
                 </a>
                 <div class="mt-4">
                     <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">STREET BIKE</h3>
-                    <h2 class="text-gray-900 title-font text-lg font-medium">Bajaj Pulsar NS200</h2>
+                    <h2 class="text-gray-900 title-font text-lg font-medium">{{bike.company}} {{bike.bikename}}</h2>
                     <p class="mt-1">₹1500.00</p>
                     <a class="mt-3 text-indigo-500 inline-flex items-center" href="{% url 'booking' %}">
                         <button
@@ -167,10 +208,40 @@
                         </button>
                     </a>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
+    
 </section>
+
+<!-- </form> -->
+
+<script>
+    $(document).ready(function () {
+        var durationText = $('#duration-text');
+        var movingStrip = $('#moving-strip');
+
+        if (durationText.length && movingStrip.length) {
+            // Adjust the duration based on your needs (in milliseconds)
+            var animationDuration = 5000;
+
+            // Calculate the width of the strip based on the text width
+            var stripWidth = durationText.width();
+
+            // Animate the strip
+            movingStrip.animate({ width: stripWidth }, animationDuration);
+
+            // You can also update the duration dynamically
+            // For example, on a button click:
+            // $('#update-duration-btn').click(function() {
+            //     var newDuration = 'New Duration';  // Replace this with your updated duration
+            //     durationText.text('Your selected duration: ' + newDuration);
+            //     stripWidth = durationText.width();
+            //     movingStrip.stop().animate({ width: stripWidth }, animationDuration);
+            // });
+        }
+    });
+</script>
 
 
 {% endblock content %}

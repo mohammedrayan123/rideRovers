@@ -11,7 +11,7 @@
   }
   </style>
 
-<form method="post" action="{% url 'home' %}"> 
+<form method="post" action="{% url 'home' %}" onsubmit="return validateDateOrder()">
   {% csrf_token %}
   <section id="homesec" class="text-gray-600 body-font h-screen first-info">
     <div class="container px-5 py-24 mx-auto">
@@ -420,5 +420,18 @@
   </div>
 </section>
 
+<script>
+  function validateDateOrder() {
+    var pickUpDate = new Date(document.getElementById('pickupdate').value);
+    var dropOffDate = new Date(document.getElementById('dropdate').value);
+
+    if (pickUpDate >= dropOffDate) {
+      alert('Drop Off date must be later than Pick Up date.');
+      return false; // Prevent form submission
+    }
+
+    return true; // Allow form submission
+  }
+</script>
 
 {% endblock content %}

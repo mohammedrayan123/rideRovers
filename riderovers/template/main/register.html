@@ -2,8 +2,41 @@
 {% load static %}
 {% block content %}
 
+<style>
+    .messages {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .messages li {
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 4px;
+    }
+
+    .error {
+        background-color: #ffdddd;
+        border: 1px solid #ff9999;
+        color: #990000;
+    }
+
+    .success {
+        background-color: #ddffdd;
+        border: 1px solid #99ff99;
+        color: #007700;
+    }
+
+    .info {
+        background-color: #e6f7ff;
+        border: 1px solid #99ccff;
+        color: #0066cc;
+    }
+</style>
+
+
 <body>
-<!-- <section class="bg-gray-50 dark:bg-gray-900"> -->
+    <!-- <section class="bg-gray-50 dark:bg-gray-900"> -->
     <section class="w-full">
         <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
             <!-- <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
@@ -15,25 +48,40 @@
                     <h1 class="text-xl font-bold leading-tight tracking-tight text-green-900 md:text-2xl">
                         Create New Account
                     </h1>
+
+                    {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                        <li class="{{ message.tags }}">{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+
                     <form class="space-y-4 md:space-y-6" action="{% url 'user_register' %}" method="post">
                         <!-- <div class="lg:w-1/2 md:w-2/3 mx-auto"> -->
-                            {% csrf_token %}
+                        {% csrf_token %}
 
-                            <div class="mt-4">
-                                <label for="user_type" class="block text-sm font-medium text-green-800">Select Account Type:</label>
-                                <div class="relative">
-                                    <select id="user_type" name="user_type" class="block appearance-none w-full bg-white border border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:border-green-500 focus:ring focus:ring-green-200">
-                                        <option value="user" class="text-green-500">User</option>
-                                        <option value="host" class="text-blue-500">Host</option>
-                                    </select>
-                                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                                        <!-- Use an icon or custom design for the dropdown arrow -->
-                                        <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0l4 4a1 1 0 001.414 0l4-4a1 1 0 011.414 1.414l-5 5a1 1 0 01-1.414 0l-5-5a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                        </svg>
-                                    </div>
+                        <div class="mt-4">
+                            <label for="user_type" class="block text-sm font-medium text-gray-700">Select Account
+                                Type:</label>
+                            <div class="relative">
+                                <select id="user_type" name="user_type"
+                                    class="block appearance-none w-full bg-white border border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:border-green-500 focus:ring focus:ring-green-200">
+                                    <option value="user" class="text-green-500">User</option>
+                                    <option value="host" class="text-blue-500">Host</option>
+                                </select>
+                                <div
+                                    class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                    <!-- Use an icon or custom design for the dropdown arrow -->
+                                    <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                        fill="currentColor">
+                                        <path fill-rule="evenodd"
+                                            d="M5.293 7.293a1 1 0 011.414 0l4 4a1 1 0 001.414 0l4-4a1 1 0 011.414 1.414l-5 5a1 1 0 01-1.414 0l-5-5a1 1 0 010-1.414z"
+                                            clip-rule="evenodd" />
+                                    </svg>
                                 </div>
                             </div>
+                        </div>
 
                         <div class="flex flex-wrap -m-2">
                             <div class="p-2 w-1/2">
@@ -41,7 +89,7 @@
                                     <label for="name" class="block mb-2 text-sm font-medium text-green-800">First
                                         Name</label>
                                     <input type="text" id="fname" name="fname"
-                                    class="block w-full rounded-md border-0 py-1.5 py-1 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6">
+                                        class="block w-full rounded-md border-0 py-1.5 py-1 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6">
                                 </div>
                             </div>
                             <div class="p-2 w-1/2">
@@ -85,7 +133,8 @@
                             </div>
                             <div class="p-2 w-1/2">
                                 <div class="relative">
-                                    <label for="email" class="block mb-2 text-sm font-medium text-green-800">Gender</label>
+                                    <label for="email"
+                                        class="block mb-2 text-sm font-medium text-green-800">Gender</label>
                                     <div class="mt-2">
                                         <select id="gender" name="gender"
                                             class="block w-full rounded-md border-0 py-1.5 py-1 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6">
@@ -110,7 +159,9 @@
                                     <label for="password"
                                         class="block mb-2 text-sm font-medium text-green-800 ">Password</label>
                                     <div class="mt-2">
-                                        <input id="password" name="password" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                                        <input id="password" name="password" type="password"
+                                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                                            title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
                                             required
                                             class="block w-full rounded-md border-0 py-1.5 py-1 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6">
                                     </div>
@@ -122,26 +173,31 @@
                                         class="block mb-2 text-sm font-medium text-green-800 ">Confirm
                                         password</label>
                                     <div class="mt-2">
-                                        <input id="confirm-password" name="confirm-password" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                                        <input id="confirm-password" name="confirm-password" type="password"
+                                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                                            title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
                                             required
                                             class="block w-full rounded-md border-0 py-1.5 py-1 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6">
                                     </div>
                                 </div>
                                 <!-- <input type="confirm-password" name="confirm-password" id="confirm-password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required=""> -->
                             </div>
-                            
+
                             <div class="p-3 pt-1 w-full pb-3">
                                 <div class="relative">
-                                    <input class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800" type="checkbox" onclick="myFunction()"> Show Password
+                                    <input
+                                        class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
+                                        type="checkbox" onclick="myFunction()"> Show Password
                                     <div class="flex items-start pt-3">
                                         <div class="flex items-center h-5">
-                                            
+
                                             <input id="terms" aria-describedby="terms" type="checkbox"
                                                 class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
                                                 required="">
                                         </div>
                                         <div class="ml-3 text-sm">
-                                            <label for="terms" class="font-light text-gray-500 dark:text-gray-600">I accept
+                                            <label for="terms" class="font-light text-gray-500 dark:text-gray-600">I
+                                                accept
                                                 the
                                                 <a class="font-medium text-green-500 hover:underline dark:text-green-700"
                                                     href="#">Terms and Conditions</a></label>
@@ -182,14 +238,14 @@
 
     <script>
         function myFunction() {
-          var x = document.getElementById("password");
-          if (x.type === "password") {
-            x.type = "text";
-          } else {
-            x.type = "password";
-          }
+            var x = document.getElementById("password");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
         }
-      </script>
+    </script>
 </body>
 
 

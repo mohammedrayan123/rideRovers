@@ -80,7 +80,12 @@ def hprofile(request):
 # def bike(request):
 #     return render(request, 'main/hostboard.html') ;
     
-def bike(request):    
+from django.shortcuts import render, redirect
+from .models import BikeData
+from django.contrib.auth.decorators import login_required
+
+@login_required
+def bike(request):
     user = request.user
 
     if request.method == 'POST':
@@ -92,8 +97,9 @@ def bike(request):
         chassis_no = request.POST.get('chassis_no')
         price = request.POST.get('price')
         dop = request.POST.get('dop')
+        biketype = request.POST.get('biketype')  # Add this line to get the selected bike type
 
-        # Save KYC data to the database
+        # Save Bike data to the database
         bikedata = BikeData(
             user=user,
             onrname=onrname,
@@ -104,7 +110,8 @@ def bike(request):
             chassis_no=chassis_no,
             price=price,
             dop=dop,
-            bikepic=request.FILES.get('bikepic'),  # Handle file upload
+            biketype=biketype,  # Add this line to save the bike type
+            bikepic=request.FILES.get('bikepic'),
         )
         bikedata.save()
 
@@ -112,6 +119,7 @@ def bike(request):
         return redirect('bike')  # Change 'success_page' to the appropriate URL
 
     return render(request, 'main/bikereg.html')
+
 
 def adminboard(request):
     return render(request, 'main/adminboard.html') ;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  

@@ -45,6 +45,8 @@ class BikeData(models.Model):
     price = models.CharField(max_length=20)
     dop = models.DateField(blank=True, null=True)
     bikepic = models.ImageField(upload_to='bike_uploads/')
+    biketype = models.CharField(max_length=20, choices=[('CLASSIC', 'Classic'), ('STREET BIKE', 'Street Bike'), ('COMMUTER', 'Commuter'), ('SPORTS BIKE', 'Sports Bike'), ('CHAPRI BIKE', 'Chapri Bike')], default='CLASSIC')
+
 
     def __str__(self):
         return f"{self.onrname} - {self.user.username}"

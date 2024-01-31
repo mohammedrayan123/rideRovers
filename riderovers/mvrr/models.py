@@ -34,7 +34,9 @@ class KYCData(models.Model):
     
     
 class BikeData(models.Model):
+
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    # bike = models.OneToOneField(User, on_delete=models.CASCADE)
     bikeid = models.UUIDField(auto_created=True, primary_key=True, default=uuid.uuid4)
     onrname = models.CharField(max_length=50)
     regno = models.CharField(max_length=50)
@@ -46,6 +48,7 @@ class BikeData(models.Model):
     dop = models.DateField(blank=True, null=True)
     bikepic = models.ImageField(upload_to='bike_uploads/')
     biketype = models.CharField(max_length=20, choices=[('CLASSIC', 'Classic'), ('STREET BIKE', 'Street Bike'), ('COMMUTER', 'Commuter'), ('SPORTS BIKE', 'Sports Bike'), ('CHAPRI BIKE', 'Chapri Bike')], default='CLASSIC')
+    bookedat=models.DateTimeField(default=datetime.datetime.now())
 
 
     def __str__(self):

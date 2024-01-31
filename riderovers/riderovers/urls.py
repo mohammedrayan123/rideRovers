@@ -22,6 +22,9 @@ from django.contrib import admin
 from django.urls import path
 from mvrr.views import *
 
+from . import settings
+from django.conf.urls. static import static
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -41,7 +44,7 @@ urlpatterns = [
     path("bike-registration",view=bike,name="bike"),
     path("admin-den",view=adminboard,name="adminboard"),
     path("main/kyc",view=kyc,name="kyc"),
-    path("booking", booking, name="booking"),
+    path("booking/<str:id>", booking, name="booking-bike"),
     path("tariff", tariff, name="tariff"),
     path("offer", offer, name="offer"),
     path("location", location, name="location"),
@@ -51,7 +54,10 @@ urlpatterns = [
     path("tc", tc, name="tc"),
     path("help", help, name="help"),
     path("kyc_done", kyc_done, name="kyc_done"),
+    path("success", success, name="success"),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 
 # urlpatterns = [
 #     path('admin/', admin.site.urls),

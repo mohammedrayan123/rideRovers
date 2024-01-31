@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.urls import reverse
 from .models import *
+import random
 import uuid
 # from datetime import datetime
 
@@ -34,8 +35,26 @@ def profile(request):
     return render(request, 'main/profile.html',{'user_profile_info':user_profile_info}) ;
 
 @login_required(login_url='login')
-def booking(request):
-    return render(request, 'main/booking.html') ;
+def booking(request,id):
+    bikedata_info = BikeData.objects.get(bikeid=id)
+    user_profile_info = UserProfile.objects.get(user_id=request.user.id)
+    if request.POST:
+        booking_regno = request.POST.get('rego').strip()
+        booking_company = request.POST.get('comapy').strip()
+        booking_bikename = request.POST.get('bikename').strip()
+        booking_price = request.POST.get('price').strip()
+        booking_color = request.POST.get('color').strip()
+        booking_dop = request.POST.get('dop').strip()
+        booking_biketype = request.POST.get('biketype').strip()
+        booking_bikepic = request.POST.get('bikepic').strip()
+        booking_bookat = request.POST.get('bookat').strip()
+        # edited_dob = request.POST.get('dob').strip()
+        # edited_addr = request.POST.get('addr').strip()
+        return redirect('booking-bike')
+    return render(request, 'main/booking.html',context={'bikedata_info':bikedata_info,'user_profile_info':user_profile_info}) ; 
+    
+            
+    # return render(request, 'main/booking.html') ;
 
 @login_required(login_url='login')
 def edituser(request,id):
@@ -274,6 +293,10 @@ def user_register(request):
         return redirect('login')
 
     return render(request, 'main/register.html')
+
+
+def success(request):
+    return render(request, 'main/success.html') ;
 
 # def home1(request):
 #     if request.method == 'POST':

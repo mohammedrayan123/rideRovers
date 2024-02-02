@@ -95,7 +95,41 @@
                            <span class="ml-3">Dashboard</span>
                         </a>
                      </li>
+                     
                      <li>
+                        <a href="{% url 'hprofile' %}"
+                           class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group ">
+                           <svg
+                              class="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-900 transition duration-75"
+                              fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                              <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                                 clip-rule="evenodd"></path>
+                           </svg>
+                           <span class="ml-3 flex-1 whitespace-nowrap">My Profile</span>
+                        </a>
+                     </li>
+                     <li>
+                        <a href="{% url 'bike' %}"
+                           class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group ">
+                           <i class="fa-solid fa-file-contract" style="color: #808080;"></i>
+                           <span class="ml-3 flex-1 whitespace-nowrap">Register Bike</span>
+                        </a>
+                     </li>
+                     <li>
+                        <a href="{% url 'bikelist' %}"
+                           class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group ">
+                           <!-- <svg
+                              class="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-900 transition duration-75"
+                              fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                              <path fill-rule="evenodd"
+                                 d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z"
+                                 clip-rule="evenodd"></path>
+                           </svg> -->
+                           <i class="fa-solid fa-motorcycle" style="color: #808080;"></i>
+                           <span class="ml-3 flex-1 whitespace-nowrap">My Bikes</span>
+                        </a>
+                     </li>
+                     <!-- <li>
                         <a href="#" target="_blank"
                            class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group ">
                            <svg
@@ -109,7 +143,7 @@
                            <span
                               class="bg-gray-200 text-gray-800 ml-3 text-sm font-medium inline-flex items-center justify-center px-2 rounded-full">Pro</span>
                         </a>
-                     </li>
+                     </li> -->
                      <li>
                         <a href="#" target="_blank"
                            class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group ">
@@ -126,44 +160,6 @@
                            <span class="ml-3 flex-1 whitespace-nowrap">Inbox</span>
                            <span
                               class="bg-gray-200 text-gray-800 ml-3 text-sm font-medium inline-flex items-center justify-center px-2 rounded-full">Pro</span>
-                        </a>
-                     </li>
-                     <li>
-                        <a href="{% url 'hprofile' %}"
-                           class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group ">
-                           <svg
-                              class="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-900 transition duration-75"
-                              fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                              <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                                 clip-rule="evenodd"></path>
-                           </svg>
-                           <span class="ml-3 flex-1 whitespace-nowrap">Users</span>
-                        </a>
-                     </li>
-                     <li>
-                        <a href="{% url 'bike' %}"
-                           class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group ">
-                           <svg
-                              class="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-900 transition duration-75"
-                              fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                              <path fill-rule="evenodd"
-                                 d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z"
-                                 clip-rule="evenodd"></path>
-                           </svg>
-                           <span class="ml-3 flex-1 whitespace-nowrap">Products</span>
-                        </a>
-                     </li>
-                     <li>
-                        <a href="#"
-                           class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group ">
-                           <svg
-                              class="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-900 transition duration-75"
-                              fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                              <path fill-rule="evenodd"
-                                 d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z"
-                                 clip-rule="evenodd"></path>
-                           </svg>
-                           <span class="ml-3 flex-1 whitespace-nowrap">Sign In</span>
                         </a>
                      </li>
                      <li>
@@ -439,7 +435,7 @@
                      </div>
                   </div>
                </div>
-               <div class="grid grid-cols-1 2xl:grid-cols-2 xl:gap-4 my-4">
+               <div class="grid xl:gap-4 my-4">
                   <div class="bg-white shadow rounded-lg mb-4 p-4 sm:p-6 h-full">
                      <div class="flex items-center justify-between mb-4">
                         <h3 class="text-xl font-bold leading-none text-gray-900">Latest Customers</h3>
@@ -452,22 +448,37 @@
                         <ul role="list" class="divide-y divide-gray-200">
                            <li class="py-3 sm:py-4">
                               <div class="flex items-center space-x-4">
-                                 <div class="flex-shrink-0">
-                                    <img class="h-8 w-8 rounded-full"
-                                       src="https://demo.themesberg.com/windster/images/users/neil-sims.png"
-                                       alt="Neil image">
+                                 
+                                 <div class="flex-1 min-w-0">
+                                    <p class="text-xl ml-8 font-medium text-gray-900 truncate">
+                                       Customer Name
+                                    </p>
+                                    
                                  </div>
                                  <div class="flex-1 min-w-0">
-                                    <p class="text-sm font-medium text-gray-900 truncate">
-                                       Neil Sims
-                                    </p>
-                                    <p class="text-sm text-gray-500 truncate">
-                                       <a href="/cdn-cgi/l/email-protection" class="__cf_email__"
-                                          data-cfemail="17727a767e7b57607e7973646372653974787a">[email&#160;protected]</a>
+                                    <p class="text-xl ml-8 font-medium text-gray-900 truncate">
+                                       Bike Name
                                     </p>
                                  </div>
-                                 <div class="inline-flex items-center text-base font-semibold text-gray-900">
-                                    $320
+                                 <div class="flex-1 min-w-0">
+                                    <p class="text-xl ml-8 font-medium text-gray-900 truncate">
+                                       Pick-Up Date
+                                    </p>
+                                 </div>
+                                 <div class="flex-1 min-w-0">
+                                    <p class="text-xl ml-8 font-medium text-gray-900 truncate">
+                                       Drop-Off Date
+                                    </p>
+                                 </div>
+                                 <div class="flex-1 min-w-0">
+                                    <p class="text-xl ml-8 font-medium text-gray-900 truncate">
+                                       Booked At
+                                    </p>
+                                 </div>
+                                 <div class="flex-1">
+                                    <p class="text-xl ml-20 font-medium text-gray-900 truncate">
+                                       Price
+                                    </p>
                                  </div>
                               </div>
                            </li>
@@ -558,7 +569,7 @@
                         </ul>
                      </div>
                   </div>
-                  <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
+                  <!-- <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
                      <h3 class="text-xl leading-none font-bold text-gray-900 mb-10">Acquisition Overview</h3>
                      <div class="block w-full overflow-x-auto">
                         <table class="items-center w-full bg-transparent border-collapse">
@@ -687,7 +698,7 @@
                            </tbody>
                         </table>
                      </div>
-                  </div>
+                  </div> -->
                </div>
             </div>
          </main>

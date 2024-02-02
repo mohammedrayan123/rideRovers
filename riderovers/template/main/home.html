@@ -27,13 +27,8 @@
 </style>
 
 <div class="text-black-50 w-full body-font" style="background-color: rgb(130, 250, 130);">
-    <div class="container py-4 duration-container">
-        {% if duration %}
-        <p class="text-lg text-center text-gray-700">
-            <span class="duration-text">Your selected duration: {{ duration }}</span>
-        </p>
-        {% endif %}
-           
+    <div>
+        <p>Duration: <span id="durationDisplay"></span></p>
     </div>
 </div>
 
@@ -53,7 +48,8 @@
                     <!-- <button class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Book</button> -->
                     <h2 class="text-gray-900 title-font text-lg font-medium">{{bike.company}} {{bike.bikename}}</h2>
                     <p class="mt-1">₹ {{ bike.price }}.00</p>
-                    <a class="mt-3 text-indigo-500 inline-flex items-center" href="{% url 'booking-bike' bike.bikeid %}">
+                    <a class="mt-3 text-indigo-500 inline-flex items-center"
+                        href="{% url 'booking-bike' bike.bikeid %}">
                         <button type="submit"
                             class="inline-flex w-80 items-center justify-center text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-700 rounded">Rent
                             Now
@@ -64,10 +60,10 @@
                         </button>
                     </a>
                 </div>
-                
+
             </div>
             {% endfor %}
-            
+
             <!-- <div class="lg:w-1/4 md:w-1/2 p-4 w-full border p-5">
                 <a class="block relative h-48 rounded overflow-hidden">
                     <img alt="ecommerce" class="object-cover object-center w-full h-full block"
@@ -210,7 +206,7 @@
             </div> -->
         </div>
     </div>
-    
+
 </section>
 
 <!-- </form> -->
@@ -241,6 +237,17 @@
         }
     });
 </script>
+
+<!-- Add this script inside the <head> or at the end of your HTML body -->
+
+<script>
+    // Retrieve the stored duration from sessionStorage
+    var storedDuration = sessionStorage.getItem('bookingDuration');
+
+    // Update the content of an HTML element with the stored duration
+    document.getElementById('durationDisplay').innerText = storedDuration;
+</script>
+
 
 
 {% endblock content %}

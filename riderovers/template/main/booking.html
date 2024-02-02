@@ -6,8 +6,8 @@
 
 <div class="py-14 px-4 md:px-6 2xl:px-20 2xl:container 2xl:mx-auto">
     <div class="flex justify-start item-start space-y-2 flex-col">
-        <h1 class="text-3xl dark:text-gray lg:text-4xl font-semibold leading-7 lg:leading-9 text-gray-800">OrderId </h1>
-        <p class="text-base dark:text-gray-900 font-medium leading-6 text-gray-600">{{ bikedata_info.bookedAt }}</p>
+        <h1 class="text-3xl dark:text-gray lg:text-4xl font-semibold leading-7 lg:leading-9 text-gray-800">Order Id #<span id="orderid"></span></h1>
+        <p class="text-base dark:text-gray-900 font-medium leading-6 text-gray-600">{{ bikedata_info.bookedat }}</p>
     </div>
     <div
         class="mt-10 flex flex-col xl:flex-row jusitfy-center items-stretch w-full xl:space-x-8 space-y-4 md:space-y-6 xl:space-y-0">
@@ -37,7 +37,7 @@
                         </div>
                         <div class="flex justify-between space-x-8 items-start w-full">
                             <p class="text-base dark:text-white xl:text-lg leading-6">₹{{bikedata_info.price}}.00</p>
-                            <p class="text-base dark:text-white xl:text-lg leading-6 text-gray-800">Total duration</p>
+                            <p class="text-base dark:text-white xl:text-lg leading-6 text-gray-800">{{ booking.duration }}</p>
                             <p class="text-base dark:text-white xl:text-lg font-semibold leading-6 text-gray-800">
                                 Multipy no of days and price</p>
                         </div>
@@ -86,8 +86,9 @@
                         </div>
                         <p class="text-lg font-semibold leading-6 dark:text-white text-gray-800">$8.00</p>
                     </div>
-                    <div class="w-full flex justify-center items-center"><a href="{% url 'success' %}">
+                    <div class="w-full flex justify-center items-center"><a href="{% url 'booking' bikedata_info.bikeid %}">
                             <button
+                            type="submit"
                                 class="hover:bg-black dark:bg-white dark:text-gray-800 dark:hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 py-4  px-20 w-96 md:w-full bg-gray-800 text-base font-medium leading-4 text-white">Confirm
                                 Booking</button>
                         </a></div>
@@ -150,6 +151,10 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.getElementById("orderid").innerHTML = Math.floor(Math.random()*90000) + 10000;;
+    </script>
 
 
 {% endblock content %}

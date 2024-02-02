@@ -11,7 +11,7 @@
   }
   </style>
 
-<form method="post" action="{% url 'home' %}" onsubmit="return validateDateOrder()">
+<form method="post" action="" onsubmit="return validateDateOrder()">
   {% csrf_token %}
   <section id="homesec" class="text-gray-600 body-font h-screen first-info">
     <div class="container px-5 py-24 mx-auto">
@@ -69,8 +69,9 @@
                 </div>
               </div>
               <div class=" w-full">
+                <input type="hidden" id="durationDisplay" name="durationDisplay">
                 <a>
-                  <button type="submit"
+                  <button type="submit" onclick="calculateDuration()"
                   class="flex mx-auto text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-700 rounded text-lg mt-5 mb-0">Search</button>
                 </a>
                 
@@ -433,5 +434,57 @@
     return true; // Allow form submission
   }
 </script>
+
+<!-- Add this script inside the <head> or at the end of your HTML body -->
+
+  <!-- Add this script inside the <head> or at the end of your HTML body -->
+
+<!-- Add this script inside the <head> or at the end of your HTML body -->
+
+  <!-- Add this script inside the <head> or at the end of your HTML body -->
+
+<!-- Add this script inside the <head> or at the end of your HTML body -->
+
+  <script>
+    function calculateDuration() {
+      // Get values from the form
+      var pickupDate = document.getElementById('pickupdate').value;
+      var pickupTime = document.getElementById('pickuptime').value;
+      var dropDate = document.getElementById('dropdate').value;
+      var dropTime = document.getElementById('droptime').value;
+  
+      // Combine date and time strings to create Date objects
+      var pickupDateTime = new Date(pickupDate + ' ' + pickupTime);
+      var dropDateTime = new Date(dropDate + ' ' + dropTime);
+  
+      // Calculate the duration in milliseconds
+      var durationMilliseconds = dropDateTime - pickupDateTime;
+  
+      // Convert milliseconds to seconds, minutes, hours
+      var seconds = Math.floor(durationMilliseconds / 1000);
+      var minutes = Math.floor(seconds / 60);
+      var hours = Math.floor(minutes / 60);
+      var days = Math.floor(hours / 24);
+  
+      // Calculate remaining hours and minutes
+      var remainingHours = hours % 24;
+      var remainingMinutes = minutes % 60;
+  
+      // Save the duration in a session variable
+      sessionStorage.setItem('bookingDuration', days > 0 ? `${days} days, ${remainingHours} hours, ${remainingMinutes} minutes` : `${hours} hours, ${remainingMinutes} minutes`);
+      var storedDuration = sessionStorage.getItem('bookingDuration');
+      document.getElementById('durationDisplay').value = storedDuration;
+
+      // Redirect to the other HTML page
+      window.location.href = 'other_page.html';
+    }
+  
+    // Attach the calculateDuration function to the form submission
+    document.querySelector('form').addEventListener('submit', calculateDuration);
+  </script>
+  
+  
+
+  
 
 {% endblock content %}

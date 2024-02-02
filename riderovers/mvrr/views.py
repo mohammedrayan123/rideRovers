@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.http import Http404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -13,6 +14,25 @@ import uuid
 @login_required(login_url='login')
 def index(request):
     if request.user.is_authenticated:
+        if request.method=='POST':
+            pickup_date=request.POST.get('pickupdate')
+            pickup_time=request.POST.get('pickuptime')
+            drop_date=request.POST.get('dropdate')
+            drop_time=request.POST.get('droptime')
+            durationDisplay=request.POST.get('durationDisplay')
+            print(durationDisplay)
+        
+            
+            request.session['pickup_date']=pickup_date
+            request.session['pickup_time']=pickup_time
+            request.session['drop_date']=drop_date
+            request.session['drop_time']=drop_time
+            request.session['durationDisplay']=durationDisplay
+            
+            return redirect('home')
+        else:
+            return render(request, 'main/index.html') ;
+    else:       
         return render(request, 'main/index.html') ;
 
 
@@ -36,25 +56,60 @@ def profile(request):
 
 @login_required(login_url='login')
 def booking(request,id):
-    bikedata_info = BikeData.objects.get(bikeid=id)
-    user_profile_info = UserProfile.objects.get(user_id=request.user.id)
-    if request.POST:
-        booking_regno = request.POST.get('rego').strip()
-        booking_company = request.POST.get('comapy').strip()
-        booking_bikename = request.POST.get('bikename').strip()
-        booking_price = request.POST.get('price').strip()
-        booking_color = request.POST.get('color').strip()
-        booking_dop = request.POST.get('dop').strip()
-        booking_biketype = request.POST.get('biketype').strip()
-        booking_bikepic = request.POST.get('bikepic').strip()
-        booking_bookat = request.POST.get('bookat').strip()
-        # edited_dob = request.POST.get('dob').strip()
-        # edited_addr = request.POST.get('addr').strip()
-        return redirect('booking-bike')
-    return render(request, 'main/booking.html',context={'bikedata_info':bikedata_info,'user_profile_info':user_profile_info}) ; 
+    try:
+        bikedata_info = BikeData.objects.get(bikeid=id)
+        user_profile_info = UserProfile.objects.get(user_id=request.user.id)
+        
+        # if request.POST:
+        #     # booking_regno = request.POST.get('rego').strip()
+        #     # booking_company = request.POST.get('comapy').strip()
+        #     # booking_bikename = request.POST.get('bikename').strip()
+        #     # booking_price = request.POST.get('price').strip()
+        #     # booking_color = request.POST.get('color').strip()
+        #     # booking_dop = request.POST.get('dop').strip()
+        #     # booking_biketype = request.POST.get('biketype').strip()
+        #     # booking_bikepic = request.POST.get('bikepic').strip()
+        #     # booking_bookat = request.POST.get('bookat').strip()
+        
+        #     pickup_date=request.session['pickup_date']
+        #     pickup_time=request.session['pickup_time']
+        #     drop_date=request.session['drop_date']
+        #     drop_time=request.session['drop_time']
+            
+            
+            
+        #     # edited_dob = request.POST.get('dob').strip()
+        #     # edited_addr = request.POST.get('addr').strip()
+        #     return redirect('booking-bike')
+        # else:
+        return render(request, 'main/booking.html',context={'bikedata_info':bikedata_info,'user_profile_info':user_profile_info,}) 
+    except BookingData.DoesNotExist:
+        raise Http404("Booking does not exist")
     
+    # bikedata_info = BikeData.objects.get(bikeid=id)
+    # user_profile_info = UserProfile.objects.get(user_id=request.user.id)
+    # booking_info = BookingData.objects.get(bookingid=request.user.id)
+    
+        
             
     # return render(request, 'main/booking.html') ;
+    
+def booking_bike(request,id):
+    try:
+        bikedata_info = BikeData.objects.get(bikeid=id)
+        user_profile_info = User.objects.get(id=request.user.id)
+        pickup_date=request.session['pickup_date']
+        pickup_time=request.session['pickup_time']
+        drop_date=request.session['drop_date']
+        drop_time=request.session['drop_time']
+        duration = request.POST.get('duration')
+        booking=BookingData.objects.create(
+            user=user_profile_info,bike=bikedata_info,pickup_date = pickup_date,pickup_time =pickup_time,dropoff_date = drop_date,dropoff_time = drop_time,duration=duration
+        )
+        return redirect('success')
+  
+    except BookingData.DoesNotExist:
+        raise Http404("Booking does not exist")
 
 @login_required(login_url='login')
 def edituser(request,id):
@@ -90,18 +145,18 @@ def deleteuser(request,id):
 def host(request):
     return render(request, 'main/hostboard.html') ; 
 
+@login_required(login_url='login')
+def bikelist(request):
+    return render(request, 'main/bikelist.html') ; 
+
 def hprofile(request):
         print(request.user.id)
         user_profile_info = UserProfile.objects.get(user_id=request.user.id)
         return render(request, 'main/hostprofile.html',{'user_profile_info':user_profile_info}) ;
-        return render(request, '') ;
 
 # def bike(request):
 #     return render(request, 'main/hostboard.html') ;
     
-from django.shortcuts import render, redirect
-from .models import BikeData
-from django.contrib.auth.decorators import login_required
 
 @login_required
 def bike(request):

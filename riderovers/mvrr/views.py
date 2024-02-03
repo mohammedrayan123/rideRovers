@@ -20,8 +20,7 @@ def index(request):
             drop_date=request.POST.get('dropdate')
             drop_time=request.POST.get('droptime')
             durationDisplay=request.POST.get('durationDisplay')
-            print(durationDisplay)
-        
+                   
             
             request.session['pickup_date']=pickup_date
             request.session['pickup_time']=pickup_time
@@ -97,12 +96,15 @@ def booking(request,id):
 def booking_bike(request,id):
     try:
         bikedata_info = BikeData.objects.get(bikeid=id)
+        price=bikedata_info.price
         user_profile_info = User.objects.get(id=request.user.id)
         pickup_date=request.session['pickup_date']
         pickup_time=request.session['pickup_time']
         drop_date=request.session['drop_date']
         drop_time=request.session['drop_time']
-        duration = request.POST.get('duration')
+        duration =request.session['durationDisplay']
+        print(duration)
+        
         booking=BookingData.objects.create(
             user=user_profile_info,bike=bikedata_info,pickup_date = pickup_date,pickup_time =pickup_time,dropoff_date = drop_date,dropoff_time = drop_time,duration=duration
         )
@@ -143,11 +145,20 @@ def deleteuser(request,id):
 
 @login_required(login_url='login')
 def host(request):
-    return render(request, 'main/hostboard.html') ; 
+    user_profile_info = UserProfile.objects.get(user_id=request.user.id)
+    booking_data = BookingData.objects.filter(bike__user_id=request.user.id)
+    context={
+        'booking_data':booking_data
+    }
+    return render(request, 'main/hostboard.html',context) 
 
 @login_required(login_url='login')
 def bikelist(request):
-    return render(request, 'main/bikelist.html') ; 
+    print(request.user.id)
+    user_profile_info = UserProfile.objects.get(user_id=request.user.id)
+    bikedata_info = BikeData.objects.filter(user_id=request.user.id)
+    return render(request, 'main/bikelist.html',{'bikedata_info':bikedata_info,'user_profile_info':user_profile_info}) ;
+    # return render(request, 'main/bikelist.html') ; 
 
 def hprofile(request):
         print(request.user.id)
@@ -171,7 +182,8 @@ def bike(request):
         chassis_no = request.POST.get('chassis_no')
         price = request.POST.get('price')
         dop = request.POST.get('dop')
-        biketype = request.POST.get('biketype')  # Add this line to get the selected bike type
+        biketype = request.POST.get('biketype')
+        # Add this line to get the selected bike type
 
         # Save Bike data to the database
         bikedata = BikeData(
@@ -184,13 +196,14 @@ def bike(request):
             chassis_no=chassis_no,
             price=price,
             dop=dop,
+            
             biketype=biketype,  # Add this line to save the bike type
             bikepic=request.FILES.get('bikepic'),
         )
         bikedata.save()
 
         # Redirect to a success page or any other desired page after saving the data
-        return redirect('bike')  # Change 'success_page' to the appropriate URL
+        return redirect('host')  # Change 'success_page' to the appropriate URL
 
     return render(request, 'main/bikereg.html')
 

@@ -104,10 +104,10 @@ def booking_bike(request,id):
         drop_date=request.session['drop_date']
         drop_time=request.session['drop_time']
         duration =request.session['durationDisplay']
-        print(duration)
+        print(price)
         
         booking=BookingData.objects.create(
-            user=user_profile_info,bike=bikedata_info,pickup_date = pickup_date,pickup_time =pickup_time,dropoff_date = drop_date,dropoff_time = drop_time,duration=duration
+            user=user_profile_info,bike=bikedata_info,pickup_date = pickup_date,pickup_time =pickup_time,dropoff_date = drop_date,dropoff_time = drop_time,duration=duration,total_price=price
         )
         return redirect('success')
   
@@ -152,14 +152,15 @@ def host(request):
         booking_data = BookingData.objects.filter(bike__user_id=request.user.id)
         booking_count = BookingData.objects.filter(bike__user_id=request.user.id).count()
 
-        # Adjust the aggregation to sum the prices of each bike
-        totprice = BookingData.objects.filter(user=request.user).aggregate(Sum('bike__price'))
+        # Adjust the aggregation to sum the prices of each bi
+        totprice = BookingData.objects.filter(bike__user=request.user).aggregate(Sum('total_price'))['total_price__sum']
+        print(totprice)
 
         context = {
             'booking_data': booking_data,
             'booking_count': booking_count,
             'bike_count': bike_count,
-            'totprice': totprice['bike__price__sum'] if totprice['bike__price__sum'] else 0,
+            'totprice': totprice,
         }
 
         return render(request, 'main/hostboard.html', context)

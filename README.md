@@ -17,7 +17,7 @@
   </p>
 </p>
 
-
+<a id="readme-top"></a>
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
@@ -133,7 +133,9 @@ License
 ![Admin Dashboard](https://github.com/mohammedrayan123/rideRovers/assets/143073265/31d8a6d1-36ad-42b6-8eb7-7a42eaeb4d1a)
 
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">
+  (<a href="#readme-top">Back to Top</a>)
+</p>
 
 
 
@@ -183,7 +185,10 @@ This section should list any major frameworks/libraries used to bootstrap your p
    git clone [https://github.com/your-username/riderovers.git
    cd riderovers](https://github.com/mohammedrayan123/rideRovers.git)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">
+  (<a href="#readme-top">Back to Top</a>)
+</p>
+
 
 
 
@@ -214,7 +219,9 @@ This section should list any major frameworks/libraries used to bootstrap your p
 
 2. **Visual Analytics**: The admin dashboard includes charts and visualizations for better business insights.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">
+  (<a href="#readme-top">Back to Top</a>)
+</p>
 
 
 
@@ -243,7 +250,9 @@ If you find the project useful, don't forget to give it a star! Your support is 
 
 Thank you for contributing!
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">
+  (<a href="#readme-top">Back to Top</a>)
+</p>
 
 
 
@@ -252,17 +261,13 @@ Thank you for contributing!
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+Gmail - riderovers134@gmail.com
 
 Project Link: https://github.com/mohammedrayan123/rideRovers.git
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
@@ -285,4 +290,7 @@ We would like to express our gratitude to the following resources that have cont
 
 These resources have played a significant role in the development and improvement of our RiderOvers project. We extend our thanks to the creators and contributors of these tools and libraries.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">
+  (<a href="#readme-top">Back to Top</a>)
+</p>
+

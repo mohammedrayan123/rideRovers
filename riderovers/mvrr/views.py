@@ -297,17 +297,12 @@ def user_login(request):
                 login(request, user)
                 return redirect('adminboard')
 
-            elif user_profile.is_host == 0:
+            elif user_type == 'user' and not user_profile.is_host :
                 login(request, user)
                 return redirect('index')
-            elif user_profile.is_host == 1:
+            elif user_type == 'host' and user_profile.is_host :
                 login(request, user)
                 return redirect('host')
-            
-            elif user_profile.is_host == 2:
-                print("You are an admin")
-                login(request, user)
-                return redirect('admin_dashboard')
 
             else:
                 messages.error(request, f"No {user_type.capitalize()} account found with this email.")

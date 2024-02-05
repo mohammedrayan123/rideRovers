@@ -1,23 +1,22 @@
 <!-- PROJECT LOGO -->
-<br />
-<div align="center">
-  <a href="[https://github.com/mohammedrayan123/rideRovers.git](https://github.com/mohammedrayan123/rideRovers.git)">
-    <img src="https://github.com/mohammedrayan123/rideRovers/assets/143073265/c56115f9-9db1-4a7e-a4e7-fcf080e04f99" alt="Logo" width="80" height="80">
+<p align="center">
+  <a href="https://github.com/mohammedrayan123/rideRovers.git">
+    <img src="https://github.com/mohammedrayan123/rideRovers/assets/143073265/c56115f9-9db1-4a7e-a4e7-fcf080e04f99" alt="rideRover's Logo" width="120" height="120">
   </a>
 
   <h3 align="center">rideRover's</h3>
 
   <p align="center">
-    An awesome README template to jumpstart your projects!
+    An awesome bike rental system with a user-friendly interface. 🚴‍♂️
     <br />
-    <!-- Additional Content -->
     <a href="https://github.com/mohammedrayan123/rideRovers.git">View on GitHub</a>
     ·
-    <a href="https://github.com/mohammedrayan123/rideRovers.git">Report Bug</a>
+    <a href="https://github.com/mohammedrayan123/rideRovers.git/issues">Report Bug</a>
     ·
-    <a href="https://github.com/mohammedrayan123/rideRovers.git">Request Feature</a>
+    <a href="https://github.com/mohammedrayan123/rideRovers.git/issues">Request Feature</a>
   </p>
-</div>
+</p>
+
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -133,23 +132,6 @@ License
 ![Host Dashboard](https://github.com/mohammedrayan123/rideRovers/assets/143073265/6ad61f17-cbfa-41af-b38e-56d0868b9257)
 ![Admin Dashboard](https://github.com/mohammedrayan123/rideRovers/assets/143073265/31d8a6d1-36ad-42b6-8eb7-7a42eaeb4d1a)
 
-
-## GETTING STARTED
-
-1. 🌐 *Clone the Repository:*
-   - Obtain a local copy of the repository.
-
-2. 🛠️ *Install Dependencies:*
-   - Ensure all necessary dependencies are installed.
-
-3. 🚀 *Start the Development Server:*
-   - Initiate the development server to kickstart your local environment.
-
-4. 🖥️ *Open the Application:*
-   - View the application in your browser.
-
-5. 🎉 *Contribute and Enjoy:*
-   - Dive into contributing to the project and enjoy the collaborative experience!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

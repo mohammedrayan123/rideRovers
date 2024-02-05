@@ -87,194 +87,121 @@
             </div>
         </div>
 
-        <!-- Tabla -->
-        <div class="bg-white rounded-lg p-4 shadow-md my-4">
-            <table class="table-auto w-full">
-                <thead>
-                    <tr>
-                        <th class="px-4 py-2 text-left border-b-2 w-full">
-                            <h2 class="text-ml font-bold text-gray-600">Bike Owners</h2>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="border-b w-full">
-                        <td class="px-4 py-2 text-left align-top w-1/2">
-                            <div>
-                                <h2>Comercio</h2>
-                                <p>24/07/2023</p>
-                            </div>
-                        </td>
-                        <td class="px-4 py-2 text-right text-cyan-500 w-1/2">
-                            <p><span>150$</span></p>
-                        </td>
-                    </tr>
-                    <tr class="border-b w-full">
-                        <td class="px-4 py-2 text-left align-top w-1/2">
-                            <div>
-                                <h2>Comercio</h2>
-                                <p>24/06/2023</p>
-                            </div>
-                        </td>
-                        <td class="px-4 py-2 text-right text-cyan-500 w-1/2">
-                            <p><span>15$</span></p>
-                        </td>
-                    </tr>
-                    <tr class="border-b w-full">
-                        <td class="px-4 py-2 text-left align-top w-1/2">
-                            <div>
-                                <h2>Comercio</h2>
-                                <p>02/05/2023</p>
-                            </div>
-                        </td>
-                        <td class="px-4 py-2 text-right text-cyan-500 w-1/2">
-                            <p><span>50$</span></p>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        <!-- Bike Owners Table -->
+<div class="bg-white rounded-lg p-4 shadow-md my-4">
+    <table class="table-auto w-full">
+        <thead>
+            <tr>
+                <th class="px-4 py-2 text-left border-b-2 w-full">
+                    <h2 class="text-ml font-bold text-gray-600">Bike Owners</h2>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for owner in bike_owners %}
+                <tr class="border-b w-full">
+                    <td class="px-4 py-2 text-left align-top w-1/2">
+                        <div>
+                            <h2>{{ owner.fname }} {{ owner.lname }}</h2>
+                            <p>Email: {{ owner.email }}</p>
+                            <p>Phone: {{ owner.phone }}</p>
+                            <!-- Add more fields as needed -->
+                        </div>
+                    </td>
+                    <!-- Add more columns as needed -->
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 
-        <div class="bg-white rounded-lg p-4 shadow-md my-4">
-            <table class="table-auto w-full">
-                <thead>
-                    <tr>
-                        <th class="px-4 py-2 text-left border-b-2 w-full">
-                            <h2 class="text-ml font-bold text-gray-600">Customers</h2>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="border-b w-full">
-                        <td class="px-4 py-2 text-left align-top w-1/2">
-                            <div>
-                                <h2>Comercio</h2>
-                                <p>24/07/2023</p>
-                            </div>
-                        </td>
-                        <td class="px-4 py-2 text-right text-cyan-500 w-1/2">
-                            <p><span>150$</span></p>
-                        </td>
-                    </tr>
-                    <tr class="border-b w-full">
-                        <td class="px-4 py-2 text-left align-top w-1/2">
-                            <div>
-                                <h2>Comercio</h2>
-                                <p>24/06/2023</p>
-                            </div>
-                        </td>
-                        <td class="px-4 py-2 text-right text-cyan-500 w-1/2">
-                            <p><span>15$</span></p>
-                        </td>
-                    </tr>
-                    <tr class="border-b w-full">
-                        <td class="px-4 py-2 text-left align-top w-1/2">
-                            <div>
-                                <h2>Comercio</h2>
-                                <p>02/05/2023</p>
-                            </div>
-                        </td>
-                        <td class="px-4 py-2 text-right text-cyan-500 w-1/2">
-                            <p><span>50$</span></p>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
 
-        <div class="bg-white rounded-lg p-4 shadow-md my-4">
-            <table class="table-auto w-full">
-                <thead>
-                    <tr>
-                        <th class="px-4 py-2 text-left border-b-2 w-full">
-                            <h2 class="text-ml font-bold text-gray-600">Booking</h2>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="border-b w-full">
-                        <td class="px-4 py-2 text-left align-top w-1/2">
-                            <div>
-                                <h2>Comercio</h2>
-                                <p>24/07/2023</p>
-                            </div>
-                        </td>
-                        <td class="px-4 py-2 text-right text-cyan-500 w-1/2">
-                            <p><span>150$</span></p>
-                        </td>
-                    </tr>
-                    <tr class="border-b w-full">
-                        <td class="px-4 py-2 text-left align-top w-1/2">
-                            <div>
-                                <h2>Comercio</h2>
-                                <p>24/06/2023</p>
-                            </div>
-                        </td>
-                        <td class="px-4 py-2 text-right text-cyan-500 w-1/2">
-                            <p><span>15$</span></p>
-                        </td>
-                    </tr>
-                    <tr class="border-b w-full">
-                        <td class="px-4 py-2 text-left align-top w-1/2">
-                            <div>
-                                <h2>Comercio</h2>
-                                <p>02/05/2023</p>
-                            </div>
-                        </td>
-                        <td class="px-4 py-2 text-right text-cyan-500 w-1/2">
-                            <p><span>50$</span></p>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        <!-- Customers Table -->
+<div class="bg-white rounded-lg p-4 shadow-md my-4">
+    <table class="table-auto w-full">
+        <thead>
+            <tr>
+                <th class="px-4 py-2 text-left border-b-2 w-full">
+                    <h2 class="text-ml font-bold text-gray-600">Customers</h2>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for customer in customers %}
+                <tr class="border-b w-full">
+                    <td class="px-4 py-2 text-left align-top w-1/2">
+                        <div>
+                            <h2>{{ customer.fname }} {{ customer.lname }}</h2>
+                            <p>Email: {{ customer.email }}</p>
+                            <p>Phone: {{ customer.phone }}</p>
+                            <!-- Add more fields as needed -->
+                        </div>
+                    </td>
+                    <!-- Add more columns as needed -->
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 
-        <div class="bg-white rounded-lg p-4 shadow-md my-4">
-            <table class="table-auto w-full">
-                <thead>
-                    <tr>
-                        <th class="px-4 py-2 text-left border-b-2 w-full">
-                            <h2 class="text-ml font-bold text-gray-600">Bike Registrations</h2>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="border-b w-full">
-                        <td class="px-4 py-2 text-left align-top w-1/2">
-                            <div>
-                                <h2>Comercio</h2>
-                                <p>24/07/2023</p>
-                            </div>
-                        </td>
-                        <td class="px-4 py-2 text-right text-cyan-500 w-1/2">
-                            <p><span>150$</span></p>
-                        </td>
-                    </tr>
-                    <tr class="border-b w-full">
-                        <td class="px-4 py-2 text-left align-top w-1/2">
-                            <div>
-                                <h2>Comercio</h2>
-                                <p>24/06/2023</p>
-                            </div>
-                        </td>
-                        <td class="px-4 py-2 text-right text-cyan-500 w-1/2">
-                            <p><span>15$</span></p>
-                        </td>
-                    </tr>
-                    <tr class="border-b w-full">
-                        <td class="px-4 py-2 text-left align-top w-1/2">
-                            <div>
-                                <h2>Comercio</h2>
-                                <p>02/05/2023</p>
-                            </div>
-                        </td>
-                        <td class="px-4 py-2 text-right text-cyan-500 w-1/2">
-                            <p><span>50$</span></p>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+
+        <!-- Bookings Table -->
+<div class="bg-white rounded-lg p-4 shadow-md my-4">
+    <table class="table-auto w-full">
+        <thead>
+            <tr>
+                <th class="px-4 py-2 text-left border-b-2 w-full">
+                    <h2 class="text-ml font-bold text-gray-600">Bookings</h2>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for booking in bookings %}
+                <tr class="border-b w-full">
+                    <td class="px-4 py-2 text-left align-top w-1/2">
+                        <div>
+                            <h2>{{ booking.user.fname }} {{ booking.user.lname }}</h2>
+                            <p>Bike: {{ booking.bike.bikename }}</p>
+                            <p>Pickup Date: {{ booking.pickup_date }}</p>
+                            <p>Dropoff Date: {{ booking.dropoff_date }}</p>
+                            <!-- Add more fields as needed -->
+                        </div>
+                    </td>
+                    <!-- Add more columns as needed -->
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- Bike Registrations Table -->
+<div class="bg-white rounded-lg p-4 shadow-md my-4">
+    <table class="table-auto w-full">
+        <thead>
+            <tr>
+                <th class="px-4 py-2 text-left border-b-2 w-full">
+                    <h2 class="text-ml font-bold text-gray-600">Bike Registrations</h2>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for bike_registration in bike_registrations %}
+                <tr class="border-b w-full">
+                    <td class="px-4 py-2 text-left align-top w-1/2">
+                        <div>
+                            <h2>{{ bike_registration.user.fname }} {{ bike_registration.user.lname }}</h2>
+                            <p>Bike: {{ bike_registration.bikename }}</p>
+                            <p>Registration Date: {{ bike_registration.dop }}</p>
+                            <!-- Add more fields as needed -->
+                        </div>
+                    </td>
+                    <!-- Add more columns as needed -->
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
 
     </div>
 

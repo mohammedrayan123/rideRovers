@@ -216,7 +216,22 @@ def bike(request):
 
 
 def adminboard(request):
-    return render(request, 'main/adminboard.html') ;        
+    # Fetch data from the database
+    bike_owners = UserProfile.objects.filter(is_host=1)  # Assuming is_host=1 indicates a bike owner
+    customers = UserProfile.objects.filter(is_host=0)  # Assuming is_host=0 indicates a regular customer
+    bookings = BookingData.objects.all()
+    bike_registrations = BikeData.objects.all()
+
+    # Pass the data to the template
+    context = {
+        'bike_owners': bike_owners,
+        'customers': customers,
+        'bookings': bookings,
+        'bike_registrations': bike_registrations,
+    }
+
+    return render(request, 'main/adminboard.html', context)
+     
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
 
 def tariff(request):
@@ -280,6 +295,8 @@ def kyc(request):
         return redirect('kyc_done')  # Change 'success_page' to the appropriate URL
 
     return render(request, 'main/kyc.html')
+
+
 def user_login(request):
     if request.method == 'POST':
         email = request.POST.get('email', '')
@@ -296,17 +313,12 @@ def user_login(request):
                 login(request, user)
                 return redirect('adminboard')
 
-            elif user_profile.is_host == 0:
+            elif user_type == 'user' and not user_profile.is_host :
                 login(request, user)
                 return redirect('index')
-            elif user_profile.is_host == 1:
+            elif user_type == 'host' and user_profile.is_host :
                 login(request, user)
                 return redirect('host')
-            
-            elif user_profile.is_host == 2:
-                print("You are an admin")
-                login(request, user)
-                return redirect('admin_dashboard')
 
             else:
                 messages.error(request, f"No {user_type.capitalize()} account found with this email.")

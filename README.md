@@ -160,7 +160,14 @@ License
 - **Order Summary:** After selecting a bike, users can review all details on the order summary page before confirming their booking.
 - **Host Insights:** Hosts can view details of confirmed bookings and earnings, as well as monitor the number of bikes they have registered through interactive charts.
 - **User and Host Profile Editing:** Users and Hosts can easily edit their personal information through the user interface.
+## Screenshots
 
+![Index page](https://github.com/mohammedrayan123/rideRovers/assets/143073265/bdce93fc-1fce-4f30-aa7b-c2b494858aa3)
+![Host Dashboard](https://github.com/mohammedrayan123/rideRovers/assets/143073265/6ad61f17-cbfa-41af-b38e-56d0868b9257)
+![Admin Dashboard](https://github.com/mohammedrayan123/rideRovers/assets/143073265/31d8a6d1-36ad-42b6-8eb7-7a42eaeb4d1a)
+
+
+![Screenshot 1](path/to/screenshot1.png)
 Use the `BLANK_README.md` to get started.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

@@ -30,7 +30,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
+  <a href="[https://github.com/othneildrew/Best-README-Template](https://github.com/mohammedrayan123/rideRovers.git)">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -100,26 +100,26 @@ Admin can be created internally.
 Admin can view details such as bike owners/hosts, all customers, all bikes registered by hosts, and bookings.
 A dashboard is available for admins to understand the business better through charts.
 Registration Process
-Host Registration:
+##Host Registration:
 
 Hosts register themselves and their bikes on the website.
-User Registration:
+##User Registration:
 
 Users register and complete KYC before renting a bike.
-Admin Creation:
+##Admin Creation:
 
 Admin can be created internally with privileged access.
 Booking Process
-Bike Selection:
+##Bike Selection:
 
 Customers select the desired bike for renting.
-Order Summary:
+##Order Summary:
 
 After bike selection, users review all details on the order summary page.
 Confirmation:
 
 Once the booking is confirmed, details of the bikes are visible to hosts and admins with required details.
-Features
+##Features
 Responsive UI: The website is responsive, providing a seamless experience across devices.
 Detailed Bike Information: Extensive details about bikes help users make informed choices.
 Social Media Integration: The project includes its own social media page for enhanced user engagement.
@@ -171,14 +171,12 @@ Use the `BLANK_README.md` to get started.
 
 This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
-* [![Next][Next.js]][Next-url]
-* [![React][React.js]][React-url]
-* [![Vue][Vue.js]][Vue-url]
-* [![Angular][Angular.io]][Angular-url]
-* [![Svelte][Svelte.dev]][Svelte-url]
-* [![Laravel][Laravel.com]][Laravel-url]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![JQuery][JQuery.com]][JQuery-url]
+## Technologies Used
+
+* [![HTML](https://img.shields.io/badge/-HTML-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
+* [![Python](https://img.shields.io/badge/-Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+* [![CSS](https://img.shields.io/badge/-CSS-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
+* [![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import Http404
 from django.contrib.auth import authenticate, login, logout
+from django.db.models import Sum
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages
@@ -143,19 +144,27 @@ def deleteuser(request,id):
     user_profile_info.delete()
     return redirect('index') 
 
-@login_required(login_url='login')
+@login_required(login_url='login') 
 def host(request):
     user_profile_info = UserProfile.objects.get(user_id=request.user.id)
-    if user_profile_info.is_host :
+    if user_profile_info.is_host:
+        bike_count = BikeData.objects.filter(user=request.user.id).count()
         booking_data = BookingData.objects.filter(bike__user_id=request.user.id)
         booking_count = BookingData.objects.filter(bike__user_id=request.user.id).count()
-        context={
-            'booking_data':booking_data,
-            'booking_count':booking_count
+
+        # Adjust the aggregation to sum the prices of each bike
+        totprice = BookingData.objects.filter(user=request.user).aggregate(Sum('bike__price'))
+
+        context = {
+            'booking_data': booking_data,
+            'booking_count': booking_count,
+            'bike_count': bike_count,
+            'totprice': totprice['bike__price__sum'] if totprice['bike__price__sum'] else 0,
         }
-        return render(request, 'main/hostboard.html',context) 
+
+        return render(request, 'main/hostboard.html', context)
     else:
-        return redirect('index')
+        return redirect('login')
 
 @login_required(login_url='login')
 def bikelist(request):
@@ -214,21 +223,26 @@ def bike(request):
 
 
 def adminboard(request):
-    # Fetch data from the database
-    bike_owners = UserProfile.objects.filter(is_host=1)  # Assuming is_host=1 indicates a bike owner
-    customers = UserProfile.objects.filter(is_host=0)  # Assuming is_host=0 indicates a regular customer
-    bookings = BookingData.objects.all()
-    bike_registrations = BikeData.objects.all()
+    user_profile_info = UserProfile.objects.get(user_id=request.user.id)
+    if user_profile_info.is_host == 2:
+        # Fetch data from the database
+        bike_owners = UserProfile.objects.filter(is_host=1)  # Assuming is_host=1 indicates a bike owner
+        customers = UserProfile.objects.filter(is_host=0)  # Assuming is_host=0 indicates a regular customer
+        bookings = BookingData.objects.all()
+        bike_registrations = BikeData.objects.all()
 
-    # Pass the data to the template
-    context = {
-        'bike_owners': bike_owners,
-        'customers': customers,
-        'bookings': bookings,
-        'bike_registrations': bike_registrations,
-    }
+        # Pass the data to the template
+        context = {
+            'bike_owners': bike_owners,
+            'customers': customers,
+            'bookings': bookings,
+            'bike_registrations': bike_registrations,
+        }
 
-    return render(request, 'main/adminboard.html', context)
+        return render(request, 'main/adminboard.html', context)
+    else:
+        return redirect('login')
+
      
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
 

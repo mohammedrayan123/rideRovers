@@ -237,20 +237,23 @@
                   <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8  2xl:col-span-2">
                      <div class="flex items-center justify-between mb-4">
                         <div class="flex-shrink-0">
-                           <span class="text-2xl sm:text-3xl leading-none font-bold text-gray-900">$45,385</span>
+                           <span class="text-2xl sm:text-3xl leading-none font-bold text-gray-900">{{ totprice }}</span>
                            <h3 class="text-base font-normal text-gray-500">Bookings this week</h3>
                         </div>
                         <div class="flex items-center justify-end flex-1 text-green-500 text-base font-bold">
                            12.5%
-                           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                              xmlns="http://www.w3.org/2000/svg">
-                              <path fill-rule="evenodd"
-                                 d="M5.293 7.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L6.707 7.707a1 1 0 01-1.414 0z"
-                                 clip-rule="evenodd"></path>
-                           </svg>
                         </div>
                      </div>
-                     <div id="main-chart"></div>
+                     <div id="main-chart">
+                        <div class="col-md-6">
+                           <div class="card">
+                              <div class="card-body">
+                                 <h5 class="card-title">Orders Status</h5>
+                                 <canvas id="pendingOrdersChart" width="400" height="200"></canvas>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
                   </div>
                   <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
                      <div class="mb-4 flex items-center justify-between">
@@ -387,7 +390,10 @@
                   <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
                      <div class="flex items-center">
                         <div class="flex-shrink-0">
-                           <span class="text-2xl sm:text-3xl leading-none font-bold text-gray-900">{{ booking_count}}</span>
+
+                           <span class="text-2xl sm:text-3xl leading-none font-bold text-gray-900">
+                              {{ booking_count }}
+                           </span>
                            <h3 class="text-base font-normal text-gray-500">Total Bookings</h3>
                         </div>
                         <div class="ml-5 w-0 flex items-center justify-end flex-1 text-green-500 text-base font-bold">
@@ -404,7 +410,9 @@
                   <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
                      <div class="flex items-center">
                         <div class="flex-shrink-0">
-                           <span class="text-2xl sm:text-3xl leading-none font-bold text-gray-900">{{bike_count}}</span>
+                           <span class="text-2xl sm:text-3xl leading-none font-bold text-gray-900">
+                              {{ bike_count }}
+                           </span>
                            <h3 class="text-base font-normal text-gray-500">Registered Bikes</h3>
                         </div>
                         <div class="ml-5 w-0 flex items-center justify-end flex-1 text-green-500 text-base font-bold">
@@ -727,8 +735,85 @@
           </p> -->
       </div>
    </div>
+   <!-- Include Chart.js library -->
+   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
    <script async defer src="https://buttons.github.io/buttons.js"></script>
    <script src="https://demo.themesberg.com/windster/app.bundle.js"></script>
+
+
+   <!-- <script>
+      var bikeCountData = {
+         labels: ["Bikes"],
+         datasets: [{
+            label: "Bike Count",
+            backgroundColor: "rgba(75, 192, 192, 0.2)",
+            borderColor: "rgba(75, 192, 192, 1)",
+            borderWidth: 1,
+            data: [{{ bike_count }}],  // Ensure default value if undefined
+      }]
+      };
+
+      var bookingCountData = {
+         labels: ["Bookings"],
+         datasets: [{
+            label: "Booking Count",
+            backgroundColor: "rgba(255, 99, 132, 0.2)",
+            borderColor: "rgba(255, 99, 132, 1)",
+            borderWidth: 1,
+            data: [{{ booking_count }}],  // Ensure default value if undefined
+      }]
+      };
+
+      var bikeCountChartCanvas = document.getElementById('bikeCountChart').getContext('2d');
+      var bookingCountChartCanvas = document.getElementById('bookingCountChart').getContext('2d');
+
+      var bikeCountChart = new Chart(bikeCountChartCanvas, {
+         type: 'bar',
+         data: bikeCountData,
+      });
+
+      var bookingCountChart = new Chart(bookingCountChartCanvas, {
+         type: 'bar',
+         data: bookingCountData,
+      });
+   </script> -->
+   <script>
+      var orderData = {
+         labels: ['Total Booking', ' Total Bikes'],
+         datasets: [{
+            label: 'Booking',
+            data: [{{ booking_count }}, {{ bike_count }}],
+         backgroundColor: [
+            'rgba(255, 99, 132, 0.5)', // Red
+            'rgba(75, 192, 192, 0.5)', // Green
+         ],
+         borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(75, 192, 192, 1)',
+         ],
+         borderWidth: 1
+         }]
+     };
+
+      // Initialize Pending Orders Chart
+      var pendingOrdersCtx = document.getElementById('pendingOrdersChart').getContext('2d');
+      var pendingOrdersChart = new Chart(pendingOrdersCtx, {
+         type: 'bar',
+         data: orderData,
+         options: {
+            scales: {
+               yAxes: [{
+                  ticks: {
+                     beginAtZero: true
+                  }
+               }]
+            }
+         }
+      });
+
+
+
+   </script>
 </div>
 
 {% endblock content %}

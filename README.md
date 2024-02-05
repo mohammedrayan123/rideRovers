@@ -66,11 +66,12 @@ Admin can be created internally.
 Admin can view details such as bike owners/hosts, all customers, all bikes registered by hosts, and bookings.
 A dashboard is available for admins to understand the business better through charts.
 Registration Process
+
+
 ##Host Registration:
-
 Hosts register themselves and their bikes on the website.
-##User Registration:
 
+##User Registration:
 Users register and complete KYC before renting a bike.
 ##Admin Creation:
 

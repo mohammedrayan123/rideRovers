@@ -13,7 +13,7 @@ class UserProfile(models.Model):
     phone = models.CharField(max_length=15, blank=True, null=True)
     dob = models.DateField(blank=True, null=True)
     addr = models.TextField(blank=True, null=True)
-    is_host = models.BooleanField(default=False)  # New field for host
+    is_host = models.IntegerField(default=0)  # New field for host
 
     def __str__(self):
         return self.user.username

@@ -209,7 +209,8 @@ def bike(request):
 
 
 def adminboard(request):
-    return render(request, 'main/adminboard.html') ;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+    return render(request, 'main/adminboard.html') ;        
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
 
 def tariff(request):
     return render(request, 'main/tariff.html') ;
@@ -283,18 +284,30 @@ def user_login(request):
         if user is not None:
             user_profile = user.userprofile
 
-            if user_type == 'user' and not user_profile.is_host:
+            if user_profile.is_host == 2:
+                print("You are an admin")
+                login(request, user)
+                return redirect('adminboard')
+
+            elif user_profile.is_host == 0:
                 login(request, user)
                 return redirect('index')
-            elif user_type == 'host' and user_profile.is_host:
+            elif user_profile.is_host == 1:
                 login(request, user)
                 return redirect('host')
+            
+            elif user_profile.is_host == 2:
+                print("You are an admin")
+                login(request, user)
+                return redirect('admin_dashboard')
+
             else:
                 messages.error(request, f"No {user_type.capitalize()} account found with this email.")
         else:
             messages.error(request, "Invalid email or password.")
-
+    
     return render(request, 'main/login.html')
+
 
 
 

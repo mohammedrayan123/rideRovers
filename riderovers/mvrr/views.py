@@ -147,13 +147,11 @@ def deleteuser(request,id):
 def host(request):
     user_profile_info = UserProfile.objects.get(user_id=request.user.id)
     if user_profile_info.is_host :
-        bike_count = BikeData.objects.filter(user=request.user.id).count()
         booking_data = BookingData.objects.filter(bike__user_id=request.user.id)
         booking_count = BookingData.objects.filter(bike__user_id=request.user.id).count()
         context={
             'booking_data':booking_data,
-            'booking_count':booking_count,
-            'bike_count':bike_count
+            'booking_count':booking_count
         }
         return render(request, 'main/hostboard.html',context) 
     else:
@@ -236,6 +234,9 @@ def adminboard(request):
 
 def tariff(request):
     return render(request, 'main/tariff.html') ;
+
+def comingsoon(request):
+    return render(request, 'main/comingsoon.html') ;
 
 def offer(request):
     return render(request, 'main/offer.html') ;

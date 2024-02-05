@@ -227,8 +227,8 @@ def adminboard(request):
     user_profile_info = UserProfile.objects.get(user_id=request.user.id)
     if user_profile_info.is_host == 2:
         # Fetch data from the database
-        bike_owners = UserProfile.objects.filter(is_host=1)  # Assuming is_host=1 indicates a bike owner
-        customers = UserProfile.objects.filter(is_host=0)  # Assuming is_host=0 indicates a regular customer
+        bike_owners = UserProfile.objects.filter(is_host=1)
+        customers = UserProfile.objects.filter(is_host=0)
         bookings = BookingData.objects.all()
         bike_registrations = BikeData.objects.all()
 
@@ -243,6 +243,10 @@ def adminboard(request):
         return render(request, 'main/adminboard.html', context)
     else:
         return redirect('login')
+
+
+
+
 
      
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
@@ -414,8 +418,18 @@ def user_register(request):
 def success(request):
     return render(request, 'main/success.html') ;
 
+from django.shortcuts import render
+from .models import BookingData
+
 def admincharts(request):
-    return render(request, 'main/admincharts.html') ;
+    # Fetch data from BookingData model including the user's name
+    bookings = BookingData.objects.select_related('user').all()
+
+    # Pass data to the template
+    return render(request, 'main/admincharts.html', {'bookings': bookings})
+
+
+
 
 # def home1(request):
 #     if request.method == 'POST':

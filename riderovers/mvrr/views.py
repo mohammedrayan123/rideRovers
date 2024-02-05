@@ -146,16 +146,11 @@ def deleteuser(request,id):
 @login_required(login_url='login')
 def host(request):
     user_profile_info = UserProfile.objects.get(user_id=request.user.id)
-    if user_profile_info.is_host :
-        booking_data = BookingData.objects.filter(bike__user_id=request.user.id)
-        booking_count = BookingData.objects.filter(bike__user_id=request.user.id).count()
-        context={
-            'booking_data':booking_data,
-            'booking_count':booking_count
-        }
-        return render(request, 'main/hostboard.html',context) 
-    else:
-        return redirect('index')
+    booking_data = BookingData.objects.filter(bike__user_id=request.user.id)
+    context={
+        'booking_data':booking_data
+    }
+    return render(request, 'main/hostboard.html',context) 
 
 @login_required(login_url='login')
 def bikelist(request):

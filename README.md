@@ -81,18 +81,85 @@
 
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
+## Overview
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+RiderOvers is a dynamic and responsive bike rental system designed to provide users with a visually appealing and user-friendly experience. With an emphasis on detailed bike information, the platform caters to three main user roles: Customers, Hosts, and Admin. Customers can seamlessly rent bikes hosted by registered hosts after completing the mandatory KYC process. Hosts, in turn, register themselves and their bikes, gaining insights into their earnings and bookings through interactive charts. Admin, with comprehensive control, can view crucial details such as bike ownership, customer data, registered bikes, and bookings, utilizing a dedicated dashboard for insightful business analysis. The project also features social media integration and allows users and hosts to conveniently edit their profiles. RiderOvers is built using Python, Django, HTML/CSS, and JavaScript, promising a responsive and engaging bike rental experience.
+Users
+1. Customers
+Customers can rent bikes hosted by registered hosts.
+Registration is required, and KYC completion is mandatory before renting a bike.
+Once registered and KYC is completed, customers can view all bikes registered by hosts.
+2. Hosts
+Hosts register themselves and their bikes on the platform.
+Hosts can check their total earnings, total bookings, and the number of bikes they have registered through interactive charts.
+Hosts can edit their personal information.
+3. Admin
+Admin has comprehensive control and analysis capabilities.
+Admin can be created internally.
+Admin can view details such as bike owners/hosts, all customers, all bikes registered by hosts, and bookings.
+A dashboard is available for admins to understand the business better through charts.
+Registration Process
+Host Registration:
 
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should implement DRY principles to the rest of your life :smile:
+Hosts register themselves and their bikes on the website.
+User Registration:
 
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
+Users register and complete KYC before renting a bike.
+Admin Creation:
+
+Admin can be created internally with privileged access.
+Booking Process
+Bike Selection:
+
+Customers select the desired bike for renting.
+Order Summary:
+
+After bike selection, users review all details on the order summary page.
+Confirmation:
+
+Once the booking is confirmed, details of the bikes are visible to hosts and admins with required details.
+Features
+Responsive UI: The website is responsive, providing a seamless experience across devices.
+Detailed Bike Information: Extensive details about bikes help users make informed choices.
+Social Media Integration: The project includes its own social media page for enhanced user engagement.
+Admin Dashboard: Admins benefit from a dashboard displaying critical business metrics through charts.
+User and Host Profile Editing: Users and hosts can easily edit their personal information through the user interface.
+Screenshots
+
+
+Technologies Used
+Python
+Django
+HTML/CSS
+JavaScript
+How to Run
+Clone the repository.
+Set up a virtual environment.
+Install dependencies using pip install -r requirements.txt.
+Set up the database using python manage.py migrate.
+Run the development server using python manage.py runserver.
+Contributing
+Fork the project.
+Create a new branch: git checkout -b feature/your-feature.
+Commit your changes: git commit -m 'Add some feature'.
+Push to the branch: git push origin feature/your-feature.
+Submit a pull request.
+License
+## Key Features
+
+- **User-Friendly Interface:** The website is crafted to provide a seamless and enjoyable user experience with a focus on ease of use.
+- **Detailed Bike Information:** Riders can find comprehensive information about available bikes, helping them make informed choices.
+- **Multi-User System:** The project involves three main users: Customers, Hosts, and Admin.
+- **User Registration:** Customers and Hosts can register on the platform, ensuring a personalized experience.
+- **Admin Management:** Admin has access to comprehensive analytics for business analysis and overall management.
+- **Host Registration:** Hosts can register themselves and add their bikes to the platform for renting.
+- **KYC Verification:** Users are required to complete KYC before renting a bike, ensuring a secure and reliable environment.
+- **Booking Management:** Customers can view all registered bikes, and admins can monitor details such as bike owners, customers, and bookings.
+- **Dashboard for Admin:** Admins benefit from a dashboard displaying critical business metrics through charts.
+- **Order Summary:** After selecting a bike, users can review all details on the order summary page before confirming their booking.
+- **Host Insights:** Hosts can view details of confirmed bookings and earnings, as well as monitor the number of bikes they have registered through interactive charts.
+- **User and Host Profile Editing:** Users and Hosts can easily edit their personal information through the user interface.
 
 Use the `BLANK_README.md` to get started.
 

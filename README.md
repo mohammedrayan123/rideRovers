@@ -1,4 +1,5 @@
 <!-- PROJECT LOGO -->
+<a id="readme-top"></a>
 <p align="center">
   <a href="https://github.com/mohammedrayan123/rideRovers.git">
     <img src="https://github.com/mohammedrayan123/rideRovers/assets/143073265/c56115f9-9db1-4a7e-a4e7-fcf080e04f99" alt="rideRover's Logo" width="120" height="120">
@@ -17,7 +18,6 @@
   </p>
 </p>
 
-<a id="readme-top"></a>
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>

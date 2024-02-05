@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+    /* Add your custom styles for the charts here */
+</style>
+
+<body class="bg-gray-200">
+    <!-- Your existing content here -->
+
+    <!-- Chart Section -->
+    <div class="bg-white rounded-lg p-4 shadow-md my-4">
+        <h2 class="text-2xl font-semibold mb-4">Monthly Bookings</h2>
+        <canvas id="monthlyBookingsChart" width="400" height="200"></canvas>
+    </div>
+
+    <div class="bg-white rounded-lg p-4 shadow-md my-4">
+        <h2 class="text-2xl font-semibold mb-4">Top Selling Bikes</h2>
+        <canvas id="topSellingBikesChart" width="400" height="200"></canvas>
+    </div>
+
+    <div class="bg-white rounded-lg p-4 shadow-md my-4">
+        <h2 class="text-2xl font-semibold mb-4">Top 3 Bikes</h2>
+        <canvas id="top3BikesChart" width="400" height="200"></canvas>
+    </div>
+
+    <!-- Include Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Your script for fetching data and creating charts -->
+    <script>
+        // Fetch data and format it as needed
+        // Example:
+        const monthlyBookingsData = {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            datasets: [{
+                label: 'Monthly Bookings',
+                data: [/* Your monthly bookings data here */],
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        };
+
+        const topSellingBikesData = {
+            // Format data for the top selling bikes chart
+        };
+
+        const top3BikesData = {
+            // Format data for the top 3 bikes chart
+        };
+
+        // Create charts
+        const ctx1 = document.getElementById('monthlyBookingsChart').getContext('2d');
+        const ctx2 = document.getElementById('topSellingBikesChart').getContext('2d');
+        const ctx3 = document.getElementById('top3BikesChart').getContext('2d');
+
+        new Chart(ctx1, {
+            type: 'bar',
+            data: monthlyBookingsData,
+            options: {
+                // Additional options for the monthly bookings chart
+            }
+        });
+
+        new Chart(ctx2, {
+            type: 'bar',
+            data: topSellingBikesData,
+            options: {
+                // Additional options for the top selling bikes chart
+            }
+        });
+
+        new Chart(ctx3, {
+            type: 'bar',
+            data: top3BikesData,
+            options: {
+                // Additional options for the top 3 bikes chart
+            }
+        });
+    </script>
+
+    <!-- Your existing script for toggling navigation, etc. -->
+</body>
+
+{% endblock content %}

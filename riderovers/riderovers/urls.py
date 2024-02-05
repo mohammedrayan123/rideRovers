@@ -57,7 +57,8 @@ urlpatterns = [
     path("help", help, name="help"),
     path("kyc_done", kyc_done, name="kyc_done"),
     path("success", success, name="success"),
-    path("comingsoon", comingsoon, name="comingsoon")
+    path("comingsoon", comingsoon, name="comingsoon"),
+    path("admincharts", admincharts, name="admincharts"),
 ]
 
 # urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

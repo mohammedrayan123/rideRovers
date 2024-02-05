@@ -3,35 +3,71 @@
 
 {% block content %}
 
+<style>
+    .data-table-container {
+        max-height: 400px; /* Adjust the max height as needed */
+        overflow-y: auto;
+    }
+
+    .data-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .data-table th, .data-table td {
+        padding: 15px;
+        text-align: left;
+        border-bottom: 1px solid #e2e8f0;
+    }
+
+    .data-table th {
+        background-color: #f8fafc;
+        font-size: 1.8rem; /* Adjust the font size as needed */
+    }
+
+    .data-table tbody tr:hover {
+        background-color: #f0f4f8;
+        transition: background-color 0.3s ease;
+    }
+</style>
+
+
 <body class="bg-gray-200">
     <!-- Barra lateral -->
     <div id="sideNav" class="lg:block hidden bg-white w-64 h-screen fixed rounded-none border-none">
         <!-- Items -->
         <div class="p-4 space-y-4">
-            <!-- Inicio -->
+            <!-- start -->
             <a href="#" aria-label="dashboard"
                 class="relative px-4 py-3 flex items-center space-x-4 rounded-lg text-white bg-gradient-to-r from-sky-600 to-cyan-400">
                 <i class="fas fa-home text-white"></i>
-                <span class="-mr-1 font-medium">Inicio</span>
+                <span class="-mr-1 font-medium">Home</span>
             </a>
 
-            <a href="#" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
+            <a href="{% url 'admincharts' %}" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
                 <i class="fas fa-wallet"></i>
-                <span>Billetera</span>
+                <span>Dashboard</span>
             </a>
             <a href="#" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
-                <i class="fas fa-exchange-alt"></i>
-                <span>Transacciones</span>
+                <i class="fas fa-book"></i>
+                <span>Booking</span>
+            </a>
+            <a href="#" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
+                <i class="fa-solid fa-bicycle"></i>
+                <span>Bikes</span>
             </a>
             <a href="#" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
                 <i class="fas fa-user"></i>
-                <span>Mi cuenta</span>
+                <span>User</span>
             </a>
-            <a href="#" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
+            <a href="{% url 'logout_user' %}" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
                 <i class="fas fa-sign-out-alt"></i>
-                <span>Cerrar sesión</span>
+                <span>Logout</span>
             </a>
         </div>
+    </div>
     </div>
 
     <div class="lg:ml-64 lg:pl-4 lg:flex lg:flex-col lg:w-75% mt-5 mx-2">
@@ -63,111 +99,109 @@
             <div class="bg-white p-4 rounded-lg xs:mb-4 max-w-full shadow-md lg:w-[65%]">
                 <!-- Cajas pequeñas -->
                 <div class="flex flex-wrap justify-between h-full">
-                    <!-- Caja pequeña 1 -->
-                    <div
-                        class="flex-1 bg-gradient-to-r from-cyan-400 to-cyan-600 rounded-lg flex flex-col items-center justify-center p-4 space-y-2 border border-gray-200 m-2">
-                        <i class="fas fa-hand-holding-usd text-white text-4xl"></i>
-                        <p class="text-white">Depositar</p>
-                    </div>
+                    <!-- Caja pequeña 1 (Bike Owners) -->
+<div class="flex-1 bg-gradient-to-r from-cyan-400 to-cyan-600 rounded-lg flex flex-col items-center justify-center p-4 space-y-2 border border-gray-200 m-2">
+    <i class="fas fa-bicycle text-white text-4xl"></i>
+    <p class="text-white">Bike Owners</p>
+    <p class="text-white">Total: {{ bike_owners|length }}</p>
+</div>
 
-                    <!-- Caja pequeña 2 -->
-                    <div
-                        class="flex-1 bg-gradient-to-r from-cyan-400 to-cyan-600 rounded-lg flex flex-col items-center justify-center p-4 space-y-2 border border-gray-200 m-2">
-                        <i class="fas fa-exchange-alt text-white text-4xl"></i>
-                        <p class="text-white">Transferir</p>
-                    </div>
+<!-- Caja pequeña 2 (Customers) -->
+<div class="flex-1 bg-gradient-to-r from-cyan-400 to-cyan-600 rounded-lg flex flex-col items-center justify-center p-4 space-y-2 border border-gray-200 m-2">
+    <i class="fas fa-users text-white text-4xl"></i>
+    <p class="text-white">Customers</p>
+    <p class="text-white">Total: {{ customers|length }}</p>
+</div>
 
-                    <!-- Caja pequeña 3 -->
-                    <div
-                        class="flex-1 bg-gradient-to-r from-cyan-400 to-cyan-600 rounded-lg flex flex-col items-center justify-center p-4 space-y-2 border border-gray-200 m-2">
-                        <i class="fas fa-qrcode text-white text-4xl"></i>
-                        <p class="text-white">Canjear</p>
-                    </div>
+<!-- Caja pequeña 3 (Bike Registrations) -->
+<div class="flex-1 bg-gradient-to-r from-cyan-400 to-cyan-600 rounded-lg flex flex-col items-center justify-center p-4 space-y-2 border border-gray-200 m-2">
+    <i class="fas fa-bicycle text-white text-4xl"></i>
+    <p class="text-white">Bike Registrations</p>
+    <p class="text-white">Total: {{ bike_registrations|length }}</p>
+</div>
+
+<!-- Caja pequeña 4 (Bookings) -->
+<div class="flex-1 bg-gradient-to-r from-cyan-400 to-cyan-600 rounded-lg flex flex-col items-center justify-center p-4 space-y-2 border border-gray-200 m-2">
+    <i class="fas fa-calendar-alt text-white text-4xl"></i>
+    <p class="text-white">Bookings</p>
+    <p class="text-white">Total: {{ bookings|length }}</p>
+</div>
+
+
                 </div>
             </div>
         </div>
 
         <!-- Bike Owners Table -->
-<div class="bg-white rounded-lg p-4 shadow-md my-4">
-    <table class="table-auto w-full">
+<div class="bg-white rounded-lg p-4 shadow-md my-4 data-table-container">
+    <table class="data-table">
         <thead>
             <tr>
-                <th class="px-4 py-2 text-left border-b-2 w-full">
-                    <h2 class="text-ml font-bold text-gray-600">Bike Owners</h2>
-                </th>
+                <th class="px-4 py-2 text-left">Bike Owners</th>
             </tr>
         </thead>
         <tbody>
             {% for owner in bike_owners %}
-                <tr class="border-b w-full">
-                    <td class="px-4 py-2 text-left align-top w-1/2">
-                        <div>
-                            <h2>{{ owner.fname }} {{ owner.lname }}</h2>
+                <tr>
+                    <td>
+                        <div class="flex flex-col">
+                            <h2 class="text-lg font-semibold">{{ owner.fname }} {{ owner.lname }}</h2>
                             <p>Email: {{ owner.email }}</p>
                             <p>Phone: {{ owner.phone }}</p>
                             <!-- Add more fields as needed -->
                         </div>
                     </td>
-                    <!-- Add more columns as needed -->
                 </tr>
             {% endfor %}
         </tbody>
     </table>
 </div>
 
-
-        <!-- Customers Table -->
-<div class="bg-white rounded-lg p-4 shadow-md my-4">
-    <table class="table-auto w-full">
+<!-- Customers Table -->
+<div class="bg-white rounded-lg p-4 shadow-md my-4 data-table-container">
+    <table class="data-table">
         <thead>
             <tr>
-                <th class="px-4 py-2 text-left border-b-2 w-full">
-                    <h2 class="text-ml font-bold text-gray-600">Customers</h2>
-                </th>
+                <th class="px-4 py-2 text-left">Customers</th>
             </tr>
         </thead>
         <tbody>
             {% for customer in customers %}
-                <tr class="border-b w-full">
-                    <td class="px-4 py-2 text-left align-top w-1/2">
-                        <div>
-                            <h2>{{ customer.fname }} {{ customer.lname }}</h2>
+                <tr>
+                    <td>
+                        <div class="flex flex-col">
+                            <h2 class="text-lg font-semibold">{{ customer.fname }} {{ customer.lname }}</h2>
                             <p>Email: {{ customer.email }}</p>
                             <p>Phone: {{ customer.phone }}</p>
                             <!-- Add more fields as needed -->
                         </div>
                     </td>
-                    <!-- Add more columns as needed -->
                 </tr>
             {% endfor %}
         </tbody>
     </table>
 </div>
 
-
-        <!-- Bookings Table -->
-<div class="bg-white rounded-lg p-4 shadow-md my-4">
-    <table class="table-auto w-full">
+<!-- Bookings Table -->
+<div class="bg-white rounded-lg p-4 shadow-md my-4 data-table-container">
+    <table class="data-table">
         <thead>
             <tr>
-                <th class="px-4 py-2 text-left border-b-2 w-full">
-                    <h2 class="text-ml font-bold text-gray-600">Bookings</h2>
-                </th>
+                <th class="px-4 py-2 text-left">Bookings</th>
             </tr>
         </thead>
         <tbody>
             {% for booking in bookings %}
-                <tr class="border-b w-full">
-                    <td class="px-4 py-2 text-left align-top w-1/2">
-                        <div>
-                            <h2>{{ booking.user.fname }} {{ booking.user.lname }}</h2>
+                <tr>
+                    <td>
+                        <div class="flex flex-col">
+                            <h2 class="text-lg font-semibold">{{ booking.user.fname }} {{ booking.user.lname }}</h2>
                             <p>Bike: {{ booking.bike.bikename }}</p>
                             <p>Pickup Date: {{ booking.pickup_date }}</p>
                             <p>Dropoff Date: {{ booking.dropoff_date }}</p>
                             <!-- Add more fields as needed -->
                         </div>
                     </td>
-                    <!-- Add more columns as needed -->
                 </tr>
             {% endfor %}
         </tbody>
@@ -175,33 +209,29 @@
 </div>
 
 <!-- Bike Registrations Table -->
-<div class="bg-white rounded-lg p-4 shadow-md my-4">
-    <table class="table-auto w-full">
+<div class="bg-white rounded-lg p-4 shadow-md my-4 data-table-container">
+    <table class="data-table">
         <thead>
             <tr>
-                <th class="px-4 py-2 text-left border-b-2 w-full">
-                    <h2 class="text-ml font-bold text-gray-600">Bike Registrations</h2>
-                </th>
+                <th class="px-4 py-2 text-left">Bike Registrations</th>
             </tr>
         </thead>
         <tbody>
             {% for bike_registration in bike_registrations %}
-                <tr class="border-b w-full">
-                    <td class="px-4 py-2 text-left align-top w-1/2">
-                        <div>
-                            <h2>{{ bike_registration.user.fname }} {{ bike_registration.user.lname }}</h2>
+                <tr>
+                    <td>
+                        <div class="flex flex-col">
+                            <h2 class="text-lg font-semibold">{{ bike_registration.user.fname }} {{ bike_registration.user.lname }}</h2>
                             <p>Bike: {{ bike_registration.bikename }}</p>
                             <p>Registration Date: {{ bike_registration.dop }}</p>
                             <!-- Add more fields as needed -->
                         </div>
                     </td>
-                    <!-- Add more columns as needed -->
                 </tr>
             {% endfor %}
         </tbody>
     </table>
 </div>
-
 
     </div>
 

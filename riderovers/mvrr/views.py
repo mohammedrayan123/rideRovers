@@ -399,6 +399,9 @@ def user_register(request):
 def success(request):
     return render(request, 'main/success.html') ;
 
+def admincharts(request):
+    return render(request, 'main/admincharts.html') ;
+
 # def home1(request):
 #     if request.method == 'POST':
 #         # Assuming the form fields are named 'pickupdate', 'pickuptime', 'dropdate', 'droptime'

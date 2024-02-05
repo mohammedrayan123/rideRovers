@@ -68,7 +68,7 @@ A dashboard is available for admins to understand the business better through ch
 Registration Process
 
 
-##Host Registration:
+### Host Registration:
 Hosts register themselves and their bikes on the website.
 
 ##User Registration:

@@ -8,15 +8,6 @@
 
   <h3 align="center">rideRover's</h3>
 
-  <p align="center">
-    An awesome bike rental system with a user-friendly interface. 🚴‍♂️
-    <br />
-    <a href="https://github.com/mohammedrayan123/rideRovers.git">View on GitHub</a>
-    ·
-    <a href="https://github.com/mohammedrayan123/rideRovers.git/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/mohammedrayan123/rideRovers.git/issues">Request Feature</a>
-  </p>
 </p>
 
 <!-- TABLE OF CONTENTS -->

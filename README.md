@@ -8,6 +8,10 @@
 
   <h3 align="center">rideRover's</h3>
 
+  <p align="center">
+    An awesome bike rental system with a user-friendly interface. 🚴‍♂️
+  </p>
+
 </p>
 
 <!-- TABLE OF CONTENTS -->

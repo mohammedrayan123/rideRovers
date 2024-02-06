@@ -104,13 +104,6 @@ Install dependencies using pip install -r requirements.txt.
 Set up the database using python manage.py migrate.
 Run the development server using python manage.py runserver.
 
-### Contributing
-Fork the project.
-Create a new branch: git checkout -b feature/your-feature.
-Commit your changes: git commit -m 'Add some feature'.
-Push to the branch: git push origin feature/your-feature.
-Submit a pull request.
-##License
 
 ## Key Features
 This project is licensed under the Christ(Deemed to be university) University License.
@@ -231,9 +224,8 @@ We would like to express our gratitude to the following resources that have cont
 * [Django Documentation](https://docs.djangoproject.com) - Official documentation for Django web framework.
 * [Tailwind CSS](https://tailwindcss.com) - A utility-first CSS framework that helps us design and build modern, user-friendly interfaces.
 * [Font Awesome](https://fontawesome.com) - A comprehensive library of icons for enhancing the visual appeal of our project.
-* [GitHub](https://github.com) - Hosting service that enables collaborative development and version control.
-* [Choose an Open Source License](https://choosealicense.com) - A guide to help choose an open-source license for our project.
-* [React Icons](https://react-icons.github.io/react-icons/search) - A collection of icons for React projects.
+* [GitHub](https://github.com) - Collaborative development and version control.
+
 
 These resources have played a significant role in the development and improvement of our RiderOvers project. We extend our thanks to the creators and contributors of these tools and libraries.
 

@@ -91,20 +91,20 @@ User and Host Profile Editing: Users and hosts can easily edit their personal in
 ![Admin Dashboard](https://github.com/mohammedrayan123/rideRovers/assets/143073265/2afaecd5-5e13-48df-bc68-35ec687181b4)
 
 
-##Technologies Used
+## Technologies Used
 Python
 Django
 HTML/CSS
 JavaScript
 
-##How to Run
+### How to Run
 Clone the repository.
 Set up a virtual environment.
 Install dependencies using pip install -r requirements.txt.
 Set up the database using python manage.py migrate.
 Run the development server using python manage.py runserver.
 
-##Contributing
+### Contributing
 Fork the project.
 Create a new branch: git checkout -b feature/your-feature.
 Commit your changes: git commit -m 'Add some feature'.

@@ -57,7 +57,8 @@
         class="fixed z-80 bottom-10 right-10 bg-green-600 w-14 h-14 rounded-full drop-shadow-lg flex justify-center items-center text-white text-4xl hover:bg-green-700 hover:drop-shadow-2xl hover:animate-bounce duration-300"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_oy3LveiHWk_dtcQhpTDnZHax4lpQ3_SaMQ&usqp=CAU"></button> -->
 
   <button onclick="buttonHandler()" title="Cat with us"
-    class="fixed z-80 bottom-10 right-10 bg-green-600 w-14 h-14 rounded-full drop-shadow-lg flex justify-center items-center text-white text-4xl hover:bg-green-700 hover:drop-shadow-2xl hover:animate-bounce duration-300">&#128049;</button>
+    class="fixed z-80 bottom-10 right-10 bg-green-600 w-14 h-14 rounded-full drop-shadow-lg flex justify-center items-center text-white text-4xl hover:bg-green-700 hover:drop-shadow-2xl hover:animate-bounce duration-300 "><img
+      class="rounded-full" src="{% static 'imgs/cat.jpg' %}"></button>
 
   <!-- <div class="chat-popup" id="myForm">
     <form action="#" class="form-container">
@@ -125,7 +126,8 @@
           </nav>
         </div>
         <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-          <h2 class="title-font font-medium text-green-700 tracking-widest text-sm mb-3" href="{% url 'comingsoon' %}">POLICIES</h2>
+          <h2 class="title-font font-medium text-green-700 tracking-widest text-sm mb-3" href="{% url 'comingsoon' %}">
+            POLICIES</h2>
           <nav class="list-none mb-10">
             <li>
               <a class="text-slate-200 hover:text-green-500" href="{% url 'privacy' %}">Privacy Policy</a>
@@ -134,7 +136,8 @@
               <a class="text-slate-200 hover:text-green-500" href="{% url 'tc' %}">Terms & Conditions</a>
             </li>
             <li>
-              <a class="text-slate-200 hover:text-green-500" href="{% url 'comingsoon' %}">rideRover's Host Vehicles Policies</a>
+              <a class="text-slate-200 hover:text-green-500" href="{% url 'comingsoon' %}">rideRover's Host Vehicles
+                Policies</a>
             </li>
             <!-- <li>
                   <a class="text-gray-600 hover:text-gray-800">Fourth Link</a>

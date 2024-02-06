@@ -156,7 +156,11 @@ def host(request):
         totprice = BookingData.objects.filter(bike__user=request.user).aggregate(Sum('total_price'))['total_price__sum']
         print(totprice)
 
+        if totprice is None:
+            totprice = 0
+
         context = {
+            'user_profile_info':user_profile_info,
             'booking_data': booking_data,
             'booking_count': booking_count,
             'bike_count': bike_count,
@@ -234,6 +238,7 @@ def adminboard(request):
 
         # Pass the data to the template
         context = {
+            'user_profile_info':user_profile_info,
             'bike_owners': bike_owners,
             'customers': customers,
             'bookings': bookings,

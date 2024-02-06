@@ -63,7 +63,7 @@
           </div>
        </div>
     </nav> -->
-   <div class="flex overflow-hidden bg-white pt-16">
+   <div class="flex overflow-hidden bg-white">
       <aside id="sidebar"
          class="fixed hidden z-20 h-full top-0 left-0 pt-16 flex lg:flex flex-shrink-0 flex-col w-64 transition-width duration-75"
          aria-label="Sidebar">
@@ -164,7 +164,7 @@
                         </a>
                      </li>
                      <li>
-                        <a href="#"
+                        <a href="{% url 'logout_user' %}"
                            class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group ">
                            <svg
                               class="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-900 transition duration-75"
@@ -173,7 +173,7 @@
                                  d="M5 4a3 3 0 00-3 3v6a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H5zm-1 9v-1h5v2H5a1 1 0 01-1-1zm7 1h4a1 1 0 001-1v-1h-5v2zm0-4h5V8h-5v2zM9 8H4v2h5V8z"
                                  clip-rule="evenodd"></path>
                            </svg>
-                           <span class="ml-3 flex-1 whitespace-nowrap">Sign Up</span>
+                           <span class="ml-3 flex-1 whitespace-nowrap">Sign Out</span>
                         </a>
                      </li>
                   </ul>
@@ -237,8 +237,15 @@
                   <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8  2xl:col-span-2">
                      <div class="flex items-center justify-between mb-4">
                         <div class="flex-shrink-0">
-                           <span class="text-2xl sm:text-3xl leading-none font-bold text-gray-900">{{ totprice }}</span>
-                           <h3 class="text-base font-normal text-gray-500">Bookings this week</h3>
+                           <span class="text-2xl sm:text-3xl leading-none font-bold text-gray-900">
+                              Welcome! <span class="text-green-500">{{user_profile_info.fname}}
+                                 {{user_profile_info.lname}}</span>.
+                           </span><br><br>
+                           <h3 class="text-base font-normal text-gray-500">Your Total Earnigs is</h3>
+                           <span class="text-2xl sm:text-3xl leading-none font-bold text-gray-900">
+                              ₹ {{ totprice }}.00
+                           </span>
+
                         </div>
                         <div class="flex items-center justify-end flex-1 text-green-500 text-base font-bold">
                            12.5%

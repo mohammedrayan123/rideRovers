@@ -211,32 +211,6 @@ npm install npm@latest -g
 
 
 <!-- CONTRIBUTING -->
-## Contributing
-
-Contributions are essential to improving our bike rental system. We appreciate your efforts to make this project better. Here's how you can contribute:
-
-### Suggesting Enhancements or Reporting Issues
-
-If you have suggestions for improvements or encounter any issues, please follow these steps:
-
-1. Fork the Project.
-2. Create a new branch for your feature or bug fix: `git checkout -b feature/YourAmazingFeature` or `git checkout -b bugfix/IssueNumber`.
-3. Commit your changes: `git commit -m 'Add some AmazingFeature'` or `git commit -m 'Fix IssueNumber'`.
-4. Push to the branch: `git push origin feature/YourAmazingFeature` or `git push origin bugfix/IssueNumber`.
-5. Open a Pull Request with a clear description of your changes.
-
-### Giving Feedback
-
-Your feedback is crucial for the project's growth. If you encounter any issues or have suggestions, please open an issue with the appropriate tags.
-
-### Star the Project
-
-If you find the project useful, don't forget to give it a star! Your support is greatly appreciated.
-
-Thank you for contributing!
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- CONTACT -->
 ## Contact

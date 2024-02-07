@@ -3,8 +3,7 @@
 <!-- PROJECT LOGO -->
 <p align="center">
   <a href="https://github.com/mohammedrayan123/rideRovers.git">
-    <img src="![logo2](https://github.com/mohammedrayan123/rideRovers/assets/143073265/9c89ebda-eee1-4553-a3af-f752bf0bdd60)
-" alt="rideRover's Logo" width="768" height="512">
+    <img src="https://github.com/mohammedrayan123/rideRovers/blob/main/riderovers/media/logo2.png?raw=true" alt="rideRover's Logo" width="120" height="120">
   </a>
 
   <h3 align="center">rideRover's</h3>

@@ -9,7 +9,9 @@ from django.urls import reverse
 from .models import *
 import random
 import uuid
-# from datetime import datetime
+from django.db.models import Count
+from django.db.models.functions import TruncMonth
+import json
 
 
 @login_required(login_url='login')
@@ -188,7 +190,7 @@ def hprofile(request):
 #     return render(request, 'main/hostboard.html') ;
     
 
-@login_required
+@login_required(login_url='login')
 def bike(request):
     user = request.user
 
@@ -226,7 +228,7 @@ def bike(request):
 
     return render(request, 'main/bikereg.html')
 
-
+@login_required(login_url='login')
 def adminboard(request):
     user_profile_info = UserProfile.objects.get(user_id=request.user.id)
     if user_profile_info.is_host == 2:
@@ -423,15 +425,24 @@ def user_register(request):
 def success(request):
     return render(request, 'main/success.html') ;
 
-from django.shortcuts import render
-from .models import BookingData
 
+@login_required(login_url='login')
 def admincharts(request):
     # Fetch data from BookingData model including the user's name
-    bookings = BookingData.objects.select_related('user').all()
+    bookings = BookingData.objects.annotate(month=TruncMonth('pickup_date')).values('month').annotate(count=Count('bookingid'))
+
+    # Format data for the chart
+    labels = [booking['month'].strftime('%B %Y') for booking in bookings]
+    counts = [booking['count'] for booking in bookings]
 
     # Pass data to the template
-    return render(request, 'main/admincharts.html', {'bookings': bookings})
+    chart_data = {
+        'labels': labels,
+        'counts': counts,
+    }
+
+    return render(request, 'main/admincharts.html', {'chart_data': json.dumps(chart_data)})
+
 
 
 

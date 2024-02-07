@@ -3,7 +3,7 @@
 <!-- PROJECT LOGO -->
 <p align="center">
   <a href="https://github.com/mohammedrayan123/rideRovers.git">
-    <img src="![logo2](https://github.com/mohammedrayan123/rideRovers/assets/143073265/0694903c-bcdf-49b8-9955-846ced938e1e)" alt="rideRover's Logo" width="768" height="512">
+    <img src="https://github.com/mohammedrayan123/rideRovers/blob/main/riderovers/media/logo2.png?raw=true" alt="rideRover's Logo" width="120" height="120">
   </a>
 
   <h3 align="center">rideRover's</h3>
@@ -46,7 +46,7 @@
 
 
 RiderOvers is a dynamic and responsive bike rental system designed to provide users with a visually appealing and user-friendly experience. With an emphasis on detailed bike information, the platform caters to three main user roles: Customers, Hosts, and Admin. Customers can seamlessly rent bikes hosted by registered hosts after completing the mandatory KYC process. Hosts, in turn, register themselves and their bikes, gaining insights into their earnings and bookings through interactive charts. Admin, with comprehensive control, can view crucial details such as bike ownership, customer data, registered bikes, and bookings, utilizing a dedicated dashboard for insightful business analysis. The project also features social media integration and allows users and hosts to conveniently edit their profiles. RiderOvers is built using Python, Django, HTML/CSS, and JavaScript, promising a responsive and engaging bike rental experience.
-##Users
+## Users
 1. Customers
 Customers can rent bikes hosted by registered hosts.
 Registration is required, and KYC completion is mandatory before renting a bike.
@@ -60,21 +60,21 @@ Admin has comprehensive control and analysis capabilities.
 Admin can be created internally.
 Admin can view details such as bike owners/hosts, all customers, all bikes registered by hosts, and bookings.
 A dashboard is available for admins to understand the business better through charts.
-##Registration Process
+## Registration Process
 1. Host Registration:
 Hosts register themselves and their bikes on the website.
 2. User Registration:
 Users register and complete KYC before renting a bike.
 3. Admin Creation:
 Admin can be created internally with privileged access.
-##Booking Process
+## Booking Process
 1. Bike Selection:
 Customers select the desired bike for renting.
 2. Order Summary:
 After bike selection, users review all details on the order summary page.
 3. Confirmation:
 Once the booking is confirmed, details of the bikes are visible to hosts and admins with required details.
-##Features
+## Features
 Responsive UI: The website is responsive, providing a seamless experience across devices.
 Detailed Bike Information: Extensive details about bikes help users make informed choices.
 Social Media Integration: The project includes its own social media page for enhanced user engagement.
@@ -204,7 +204,6 @@ npm install npm@latest -g
 
 <!-- CONTACT -->
 ## Contact
-
 Gmail - riderovers134@gmail.com
 
 Project Link: https://github.com/mohammedrayan123/rideRovers.git
@@ -226,8 +225,6 @@ We would like to express our gratitude to the following resources that have cont
 
 These resources have played a significant role in the development and improvement of our RiderOvers project. We extend our thanks to the creators and contributors of these tools and libraries.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
@@ -245,3 +242,4 @@ These resources have played a significant role in the development and improvemen
 [CSS]: https://img.shields.io/badge/-CSS-1572B6?style=for-the-badge&logo=css3&logoColor=white
 [JavaScript]: https://img.shields.io/badge/-JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black
 [Tailwind CSS]: https://img.shields.io/badge/-Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white
+<p align="right">(<a href="#readme-top">back to top</a>)</p>

@@ -56,7 +56,6 @@ def profile(request):
     user_profile_info = UserProfile.objects.get(user_id=request.user.id)
     return render(request, 'main/profile.html',{'user_profile_info':user_profile_info}) ;
 
-@login_required(login_url='login')
 def booking(request,id):
     try:
         bikedata_info = BikeData.objects.get(bikeid=id)

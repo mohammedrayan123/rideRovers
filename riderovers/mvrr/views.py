@@ -426,8 +426,8 @@ def success(request):
     return render(request, 'main/success.html') ;
 
 
-from django.db.models import Count, Sum
-from decimal import Decimal
+from django.core.serializers.json import DjangoJSONEncoder
+import json
 
 @login_required(login_url='login')
 def admincharts(request):
@@ -445,13 +445,24 @@ def admincharts(request):
     revenue_labels = [r['month'].strftime('%B %Y') for r in revenue]
     revenue_totals = [float(r['total_price']) for r in revenue]  # Convert Decimal to float
 
+    # Fetch data for the top-performing bikes
+    top_bikes = BikeData.objects.annotate(total_revenue=Sum('bookingdata__total_price')).order_by('-total_revenue')[:5]
+    bike_names = [bike.bikename for bike in top_bikes]
+    bike_revenues = [float(bike.total_revenue) for bike in top_bikes]  # Convert Decimal to float
+
     # Pass data to the template
     chart_data = {
         'bookings': {'labels': labels, 'counts': counts},
-        'revenue': {'labels': revenue_labels, 'totals': revenue_totals}
+        'revenue': {'labels': revenue_labels, 'totals': revenue_totals},
+        'top_bikes': {'names': bike_names, 'revenues': bike_revenues}
     }
 
-    return render(request, 'main/admincharts.html', {'chart_data': json.dumps(chart_data)})
+    # Serialize chart data to JSON
+    chart_data_json = json.dumps(chart_data, cls=DjangoJSONEncoder)
+
+    return render(request, 'main/admincharts.html', {'chart_data': chart_data_json})
+
+
 
 
 

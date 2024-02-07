@@ -12,17 +12,17 @@
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
         <style>
-            .charts-container-1 {
+            .charts-container {
                 display: flex;
                 flex-wrap: wrap;
                 justify-content: space-around;
             }
 
-            .charts-container-2 {
+            /* .charts-container-2 {
                 display: flex;
                 flex-wrap: wrap;
                 justify-content: space-around;
-            }
+            } */
         
             .chart {
                 flex: 0 1 calc(45% - 20px);
@@ -92,23 +92,20 @@
         </div>
 
         <div id="chartt" class="bg-white p-4 rounded-lg xs:mb-4 max-w-full shadow-md lg:w-full">
-            <div class="charts-container-1">
-                <!-- First Chart: Existing chart -->
+            <div class="charts-container">
+                <!-- First Chart: Number of bookings per month -->
                 <canvas class="chart" id="myChart" width="300" height="100"></canvas>
-            
-                <!-- Second Chart: New chart -->
+
+                <!-- Second Chart: Total revenue per month -->
                 <canvas class="chart" id="chart2" width="300" height="100"></canvas>
+
+                <!-- Third Chart: Top-performing bikes -->
+                <canvas class="chart" id="topBikesChart" width="300" height="100"></canvas>
+
+                <!-- Fourth Chart: Number of bookings by day of the week -->
+                <canvas class="chart" id="bookingsByDayOfWeekChart" width="300" height="100"></canvas>
             </div>
-
-            <div class="charts-container-2">    
-                <!-- Third Chart: New chart -->
-                <canvas id="topBikesChart" width="300" height="100"></canvas>
-
-                <!-- Fourth Chart: New chart -->
-                <canvas id="bookingsByDayOfWeekChart" width="300" height="100"></canvas>
-
-            </div>
-        </div>        
+        </div>       
         
     </div>
 
@@ -201,6 +198,34 @@ new Chart(ctx3, {
         }
     }
 });
+
+// Create the fourth chart instance for bookings by day of the week
+var ctx4 = document.getElementById('bookingsByDayOfWeekChart').getContext('2d');
+
+new Chart(ctx4, {
+    type: 'bar',
+    data: {
+        labels: chartData.bookings_by_day_of_week.labels,
+        datasets: [{
+            label: 'Number of Bookings by Day of Week',
+            backgroundColor: 'rgba(153, 102, 255, 0.2)',
+            borderColor: 'rgba(153, 102, 255, 1)',
+            borderWidth: 1,
+            data: chartData.bookings_by_day_of_week.counts
+        }]
+    },
+    options: {
+        // Specify chart options here
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+
 
     </script>
 

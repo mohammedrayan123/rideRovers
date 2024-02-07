@@ -479,7 +479,7 @@
       document.getElementById('durationDisplay').value = storedDuration;
 
       // Redirect to the other HTML page
-      window.location.href = 'other_page.html';
+      window.location.href = "{% url 'index' %}";
     }
   
     // Attach the calculateDuration function to the form submission

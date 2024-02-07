@@ -426,22 +426,34 @@ def success(request):
     return render(request, 'main/success.html') ;
 
 
+from django.db.models import Count, Sum
+from decimal import Decimal
+
 @login_required(login_url='login')
 def admincharts(request):
-    # Fetch data from BookingData model including the user's name
+    # Fetch data for the first chart: Number of bookings per month
     bookings = BookingData.objects.annotate(month=TruncMonth('pickup_date')).values('month').annotate(count=Count('bookingid'))
 
-    # Format data for the chart
+    # Format data for the first chart
     labels = [booking['month'].strftime('%B %Y') for booking in bookings]
     counts = [booking['count'] for booking in bookings]
 
+    # Fetch data for the second chart: Total revenue per month
+    revenue = BookingData.objects.annotate(month=TruncMonth('pickup_date')).values('month').annotate(total_price=Sum('total_price'))
+
+    # Format data for the second chart
+    revenue_labels = [r['month'].strftime('%B %Y') for r in revenue]
+    revenue_totals = [float(r['total_price']) for r in revenue]  # Convert Decimal to float
+
     # Pass data to the template
     chart_data = {
-        'labels': labels,
-        'counts': counts,
+        'bookings': {'labels': labels, 'counts': counts},
+        'revenue': {'labels': revenue_labels, 'totals': revenue_totals}
     }
 
     return render(request, 'main/admincharts.html', {'chart_data': json.dumps(chart_data)})
+
+
 
 
 

@@ -9,21 +9,25 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <style>
-    .charts-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-canvas {
-    flex: 0 1 calc(50% - 10px); /* Adjust the width of each chart to occupy 50% of the container width */
-    margin-bottom: 20px; /* Add some margin between the charts */
-}
-
-    </style>
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <style>
+            .charts-container {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+        
+            .chart {
+                flex: 0 1 calc(45% - 20px); /* Adjust the width of each chart to occupy 45% of the container width */
+                margin-bottom: 20px;
+                max-width: 450px; /* Set a maximum width for the chart to prevent it from stretching too much */
+            }
+            
+        </style>
+        
+        
+        
     <title>Admin Charts - rideRovers</title>
 </head>
 
@@ -35,52 +39,63 @@ canvas {
             <!-- start -->
             <a class="flex title-font font-medium items-center text-slate-200 mb-2 md:mb-0" href="{% url 'index' %}">
                 <img src="{% static 'imgs\logo2.png' %}" style="width: 200px; height:120px;">
-            </a>  
-        
-            <a href="{% url 'adminboard' %}" aria-label="dashboard" class="relative px-4 py-3 flex items-center space-x-4 rounded-lg text-white bg-gradient-to-r from-green-600 to-green-300">
+            </a>
+
+            <a href="{% url 'adminboard' %}" aria-label="dashboard"
+                class="relative px-4 py-3 flex items-center space-x-4 rounded-lg text-white bg-gradient-to-r from-green-600 to-green-300">
                 <i class="fas fa-home text-white"></i>
                 <span class="-mr-1 font-medium">Home</span>
             </a>
-        
-            <a href="{% url 'admincharts' %}" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
+
+            <a href="{% url 'admincharts' %}"
+                class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
                 <i class="fas fa-wallet"></i>
                 <span>Dashboard</span>
             </a>
-            <a href="{% url 'adminboard' %}#bookings" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
+            <a href="{% url 'adminboard' %}#bookings"
+                class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
                 <i class="fas fa-book"></i>
                 <span>Booking</span>
             </a>
-            <a href="{% url 'adminboard' %}#bikes" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
+            <a href="{% url 'adminboard' %}#bikes"
+                class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
                 <i class="fa-solid fa-bicycle"></i>
                 <span>Bikes</span>
             </a>
-            <a href="{% url 'adminboard' %}#customers" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
+            <a href="{% url 'adminboard' %}#customers"
+                class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
                 <i class="fas fa-user"></i>
                 <span>User</span>
             </a>
-            <a href="{% url 'logout_user' %}" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
+            <a href="{% url 'logout_user' %}"
+                class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
                 <i class="fas fa-sign-out-alt"></i>
                 <span>Logout</span>
             </a>
         </div>
-        
+
     </div>
 
     <!-- Main content area -->
     <div class="lg:ml-64 lg:pl-4 lg:flex lg:flex-col lg:w-75% mt-5 mx-2">
         <div class="bg-white rounded-full border-none p-3 mb-4 shadow-md">
             <span class="text-2xl sm:text-3xl leading-none font-bold text-gray-900">
-                This is your charts <span class="text-green-500">{{user_profile_info.fname}} {{user_profile_info.lname}}</span>.
+                This is your charts <span class="text-green-500">{{user_profile_info.fname}}
+                    {{user_profile_info.lname}}</span>.
             </span>
         </div>
 
-        <div class="bg-white p-4 rounded-lg xs:mb-4 max-w-full shadow-md lg:w-full">
+        <div id="chartt" class="bg-white p-4 rounded-lg xs:mb-4 max-w-full shadow-md lg:w-full">
             <div class="charts-container">
-                <canvas id="myChart" width="100" height="50"></canvas>
-                <canvas id="chart2" width="300" height="200"></canvas>
-                <!-- Add more canvas elements for additional charts -->
-            </div>            
+                <!-- First Chart: Existing chart -->
+                <canvas class="chart" id="myChart" width="300" height="100"></canvas>
+            </div>
+            <div class="charts-container">
+                <!-- Second Chart: New chart -->
+                <canvas class="chart" id="chart2" width="300" height="100"></canvas>
+            </div>
         </div>
+        
     </div>
 
     <!-- Script  -->
@@ -93,39 +108,59 @@ canvas {
         });
     </script>
     <!-- Script -->
-<script>
-    // Get context of the canvas element
-    var ctx = document.getElementById('myChart').getContext('2d');
+    <script>
+        // Get context of the canvas elements
+        var ctx1 = document.getElementById('myChart').getContext('2d');
+        var ctx2 = document.getElementById('chart2').getContext('2d');
 
-    // Parse the JSON data passed from the view
-    var chartData = JSON.parse('{{ chart_data|safe }}');
+        // Parse the JSON data passed from the view
+        var chartData = JSON.parse('{{ chart_data|safe }}');
 
-    // Create the chart instance
-    var myChart = new Chart(ctx, {
-        type: 'bar', // Change this to the type of chart you want (e.g., line, pie, etc.)
-        data: {
-            labels: chartData.labels,
-            datasets: [{
-                label: 'Number of Bookings',
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                borderColor: 'rgba(255, 99, 132, 1)',
-                borderWidth: 1,
-                data: chartData.counts
-            }]
-        },
-        options: {
-            // Specify chart options here (e.g., title, scales, etc.)
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
+        // Create the first chart instance
+        var myChart = new Chart(ctx1, {
+            type: 'bar', // Change this to the type of chart you want (e.g., line, pie, etc.)
+            data: {
+                labels: chartData.bookings.labels,
+                datasets: [{
+                    label: 'Number of Bookings',
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1,
+                    data: chartData.bookings.counts
                 }]
+            },
+            options: {
+                // Specify chart options here (e.g., title, scales, etc.)
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
             }
-        }
-    });
-</script>
-    
+        });
+
+        // Create the second chart instance
+        var chart2 = new Chart(ctx2, {
+            type: 'line', // Change this to the type of chart you want (e.g., line, bar, pie, etc.)
+            data: {
+                labels: chartData.revenue.labels,
+                datasets: [{
+                    label: 'Total Revenue',
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1,
+                    data: chartData.revenue.totals
+                }]
+            },
+            options: {
+                // Specify chart options here
+            }
+        });
+    </script>
+
+
 
 </body>
 

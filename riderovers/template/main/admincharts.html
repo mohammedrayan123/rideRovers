@@ -108,6 +108,9 @@
                 <!-- Fifth Chart: Owners' revenue -->
                 <canvas class="chart" id="ownersChart" width="300" height="100"></canvas>
 
+                <!-- Sixth Chart: Number of bikes per owner -->
+                <canvas class="chart" id="bikesPerOwnerChart" width="300" height="100"></canvas>
+
 
             </div>
         </div>       
@@ -266,7 +269,36 @@ new Chart(ctx4, {
 </script>
 
 
-    
+<script>
+    // Create the sixth chart instance for bikes per owner
+    var ctx6 = document.getElementById('bikesPerOwnerChart').getContext('2d');
+
+    new Chart(ctx6, {
+        type: 'bar',
+        data: {
+            labels: chartData.bikes_per_owner.names,
+            datasets: [{
+                label: 'Number of Bikes',
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1,
+                data: chartData.bikes_per_owner.counts
+            }]
+        },
+        options: {
+            // Specify chart options here
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+</script>
+
+
 
 </body>
 

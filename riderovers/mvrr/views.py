@@ -468,6 +468,22 @@ def admincharts(request):
     owner_names = [owner.fname + " " + owner.lname for owner in owners_revenue]
     owner_revenues = [float(owner.total_revenue) if owner.total_revenue is not None else 0.0 for owner in owners_revenue]
 
+    # Fetch data for the fifth chart: Number of bikes per owner
+    bikes_per_owner = BikeData.objects.exclude(user__userprofile=None).values('user').annotate(total_bikes=Count('bikeid')).order_by('-total_bikes')[:5]
+
+    # Prepare data for the fifth chart
+    owner_names_bikes = []
+    bikes_counts = []
+
+    for owner_data in bikes_per_owner:
+        try:
+            owner_profile = UserProfile.objects.get(user=owner_data['user'])
+            owner_name = f"{owner_profile.fname} {owner_profile.lname}"
+            owner_names_bikes.append(owner_name)
+            bikes_counts.append(owner_data['total_bikes'])
+        except UserProfile.DoesNotExist:
+            # Handle the case where UserProfile does not exist for the user
+            pass
 
     # Pass data to the template
     chart_data = {
@@ -475,13 +491,15 @@ def admincharts(request):
         'revenue': {'labels': revenue_labels, 'totals': revenue_totals},
         'top_bikes': {'names': bike_names, 'revenues': bike_revenues},
         'bookings_by_day_of_week': {'labels': days_of_week_labels, 'counts': bookings_by_day_of_week_counts},
-        'owners_revenue': {'names': owner_names, 'revenues': owner_revenues}
+        'owners_revenue': {'names': owner_names, 'revenues': owner_revenues},
+        'bikes_per_owner': {'names': owner_names_bikes, 'counts': bikes_counts}
     }
 
     # Serialize chart data to JSON
     chart_data_json = json.dumps(chart_data, cls=DjangoJSONEncoder)
 
     return render(request, 'main/admincharts.html', {'chart_data': chart_data_json})
+
 
 
 

@@ -62,25 +62,3 @@ urlpatterns = [
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
-
-# urlpatterns = [
-#     path('admin/', admin.site.urls),
-#     path("",view=login,name="login"),
-#     path("main/hlogin",view=hlogin,name="hlogin"),
-#     path("main/index",index,name="index"),
-#     path("main/register",view=register,name="register"),
-#     path("main/hregister",view=hregister,name="hregister"),
-#     path("main/home",view=home,name="home"),
-#     path("main/profile",view=profile,name="profile"),
-#     path("main/kyc",view=kyc,name="kyc"),
-#     path("main/booking",view=booking,name="booking"),
-#     path("main/tariff",view=tariff,name="tariff"),
-#     path("main/offer",view=offer,name="offer"),
-#     path("main/location",view=location,name="location"),
-#     path("main/contact",view=contact,name="contact"),
-#     path("main/about",view=about,name="about"),
-#     path("main/privacy",view=privacy,name="privacy"),
-#     path("main/tc",view=tc,name="tc"),
-#     path("main/help",view=help,name="help"),
-
-# ]

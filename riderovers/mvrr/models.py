@@ -82,23 +82,3 @@ class BookingData(models.Model):
     def _str_(self):
         return f"Booking #{self.pk} - {self.user.username} - {self.bike.bikename}"
     
-# class BookingData(models.Model):
-
-#     user = models.ForeignKey(User, on_delete=models.CASCADE)
-#     # bike = models.OneToOneField(User, on_delete=models.CASCADE)
-#     bikeid = models.UUIDField(auto_created=True, primary_key=True, default=uuid.uuid4)
-#     onrname = models.CharField(max_length=50)
-#     regno = models.CharField(max_length=50)
-#     company = models.CharField(max_length=50)
-#     bikename = models.CharField(max_length=50)
-#     color = models.CharField(max_length=50)
-#     chassis_no = models.CharField(max_length=50)
-#     price = models.CharField(max_length=20)
-#     dop = models.DateField(blank=True, null=True)
-#     bikepic = models.ImageField(upload_to='bike_uploads/')
-#     biketype = models.CharField(max_length=20, choices=[('CLASSIC', 'Classic'), ('STREET BIKE', 'Street Bike'), ('COMMUTER', 'Commuter'), ('SPORTS BIKE', 'Sports Bike'), ('CHAPRI BIKE', 'Chapri Bike')], default='CLASSIC')
-#     bookedat=models.DateTimeField(default=datetime.datetime.now())
-
-
-#     def __str__(self):
-#         return f"{self.onrname} - {self.user.username}"

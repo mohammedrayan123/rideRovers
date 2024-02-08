@@ -104,6 +104,11 @@
 
                 <!-- Fourth Chart: Number of bookings by day of the week -->
                 <canvas class="chart" id="bookingsByDayOfWeekChart" width="300" height="100"></canvas>
+
+                <!-- Fifth Chart: Owners' revenue -->
+                <canvas class="chart" id="ownersChart" width="300" height="100"></canvas>
+
+
             </div>
         </div>       
         
@@ -227,7 +232,41 @@ new Chart(ctx4, {
 });
 
 
+
+
     </script>
+
+<script>
+    // Create the fifth chart instance for owners' revenue
+    var ctx5 = document.getElementById('ownersChart').getContext('2d');
+
+    new Chart(ctx5, {
+        type: 'bar',
+        data: {
+            labels: chartData.owners_revenue.names,
+            datasets: [{
+                label: 'Owners\' Revenue',
+                backgroundColor: 'rgba(255, 206, 86, 0.2)',
+                borderColor: 'rgba(255, 206, 86, 1)',
+                borderWidth: 1,
+                data: chartData.owners_revenue.revenues
+            }]
+        },
+        options: {
+            // Specify chart options here
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+</script>
+
+
+    
 
 </body>
 

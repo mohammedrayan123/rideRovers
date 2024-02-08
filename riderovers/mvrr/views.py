@@ -425,11 +425,11 @@ def success(request):
     return render(request, 'main/success.html') ;
 
 
-from django.db.models import Count, Sum
+from django.db.models import Count, Sum, F
 from django.db.models.functions import TruncMonth, ExtractWeekDay
 from django.core.serializers.json import DjangoJSONEncoder
 import json
-from .models import BookingData, BikeData
+from .models import BookingData, BikeData, UserProfile
 
 @login_required(login_url='login')
 def admincharts(request):
@@ -462,18 +462,29 @@ def admincharts(request):
     for booking in bookings_by_day_of_week:
         bookings_by_day_of_week_counts[booking['day_of_week'] - 1] = booking['count']
 
+    # Fetch owners' data and do analytics
+    owners_data = UserProfile.objects.filter(is_host=1)
+    owners_revenue = owners_data.annotate(total_revenue=Sum('user__bikedata__bookingdata__total_price')).order_by('-total_revenue')[:5]
+    owner_names = [owner.fname + " " + owner.lname for owner in owners_revenue]
+    owner_revenues = [float(owner.total_revenue) if owner.total_revenue is not None else 0.0 for owner in owners_revenue]
+
+
     # Pass data to the template
     chart_data = {
         'bookings': {'labels': labels, 'counts': counts},
         'revenue': {'labels': revenue_labels, 'totals': revenue_totals},
         'top_bikes': {'names': bike_names, 'revenues': bike_revenues},
-        'bookings_by_day_of_week': {'labels': days_of_week_labels, 'counts': bookings_by_day_of_week_counts}
+        'bookings_by_day_of_week': {'labels': days_of_week_labels, 'counts': bookings_by_day_of_week_counts},
+        'owners_revenue': {'names': owner_names, 'revenues': owner_revenues}
     }
 
     # Serialize chart data to JSON
     chart_data_json = json.dumps(chart_data, cls=DjangoJSONEncoder)
 
     return render(request, 'main/admincharts.html', {'chart_data': chart_data_json})
+
+
+
 
 
 

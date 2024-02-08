@@ -83,10 +83,10 @@ User and Host Profile Editing: Users and hosts can easily edit their personal in
 ## Screenshot
 ![Index page](https://github.com/mohammedrayan123/rideRovers/assets/143073265/7ab0cac6-4152-4771-9bc3-d85172c4c0b2)
 ![Home](https://github.com/mohammedrayan123/rideRovers/assets/143073504/2ebb5202-2b4e-4095-ad61-0db7023beddd)
-![order]<img width="947" alt="booking" src="https://github.com/mohammedrayan123/rideRovers/assets/142865391/bb3470de-0fd3-4ee3-8f2e-856a0d1171f5">
+![order](https://github.com/mohammedrayan123/rideRovers/assets/142865391/bb3470de-0fd3-4ee3-8f2e-856a0d1171f5)
 ![Host Dashboard](https://github.com/mohammedrayan123/rideRovers/assets/143073504/f6854ebf-d6f8-4e28-a0eb-1f90ed9c95f3)
 ![Admin Dashboar](https://github.com/mohammedrayan123/rideRovers/assets/143073504/5f29d492-e2e3-44cf-bff2-d5fb81776977)
-![Analysis]<img width="942" alt="charts" src="https://github.com/mohammedrayan123/rideRovers/assets/142865391/67f2d46e-a9a4-4b17-b787-16010f9f4b2a">
+![Analysis](https://github.com/mohammedrayan123/rideRovers/assets/142865391/67f2d46e-a9a4-4b17-b787-16010f9f4b2a)
 
 
 ## Technologies Used

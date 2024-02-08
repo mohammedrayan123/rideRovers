@@ -11,6 +11,9 @@ import random
 import uuid
 from django.db.models import Count
 from django.db.models.functions import TruncMonth
+from django.db.models import Count, Sum, F
+from django.db.models.functions import TruncMonth, ExtractWeekDay
+from django.core.serializers.json import DjangoJSONEncoder
 import json
 
 
@@ -185,8 +188,6 @@ def hprofile(request):
         user_profile_info = UserProfile.objects.get(user_id=request.user.id)
         return render(request, 'main/hostprofile.html',{'user_profile_info':user_profile_info}) ;
 
-# def bike(request):
-#     return render(request, 'main/hostboard.html') ;
     
 
 @login_required(login_url='login')
@@ -249,13 +250,7 @@ def adminboard(request):
         return render(request, 'main/adminboard.html', context)
     else:
         return redirect('login')
-
-
-
-
-
-     
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
 
 def tariff(request):
     return render(request, 'main/tariff.html') ;
@@ -425,11 +420,6 @@ def success(request):
     return render(request, 'main/success.html') ;
 
 
-from django.db.models import Count, Sum, F
-from django.db.models.functions import TruncMonth, ExtractWeekDay
-from django.core.serializers.json import DjangoJSONEncoder
-import json
-from .models import BookingData, BikeData, UserProfile
 
 @login_required(login_url='login')
 def admincharts(request):
@@ -500,96 +490,3 @@ def admincharts(request):
 
     return render(request, 'main/admincharts.html', {'chart_data': chart_data_json})
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-# def home1(request):
-#     if request.method == 'POST':
-#         # Assuming the form fields are named 'pickupdate', 'pickuptime', 'dropdate', 'droptime'
-#         pickupdate_str = request.POST.get('pickupdate')
-#         pickuptime_str = request.POST.get('pickuptime')
-#         dropdate_str = request.POST.get('dropdate')
-#         droptime_str = request.POST.get('droptime')
-
-#         # Combine date and time strings to create datetime objects
-#         pickup_datetime = datetime.strptime(f'{pickupdate_str} {pickuptime_str}', '%Y-%m-%d %H:%M')
-#         drop_datetime = datetime.strptime(f'{dropdate_str} {droptime_str}', '%Y-%m-%d %H:%M')
-
-#         # Calculate duration
-#         duration = drop_datetime - pickup_datetime
-
-#         # Pass the duration to the context
-#         context = {'duration': duration}
-#         return render(request, 'main/home.html',context)
-
-# def hlogin(request):
-#     return render(request, 'main/hlogin.html') ;
-
-# def hregister(request):
-#     return render(request, 'main/hregister.html') ;
-
-
-
-# from django.shortcuts import render,redirect
-
-# def index(request):
-#     return render(request, 'main/index.html') ;
-
-# def login(request):
-#     return render(request, 'main/login.html') ;
-
-# def hlogin(request):
-#     return render(request, 'main/hlogin.html') ;
-
-# def register(request):
-#     return render(request, 'main/register.html') ;
-
-# def hregister(request):
-#     return render(request, 'main/hregister.html') ;
-
-# def home(request):
-#     return render(request, 'main/home.html') ; 
-
-# def profile(request):
-#     return render(request, 'main/profile.html') ;
-
-# def kyc(request):
-#     return render(request, 'main/kyc.html') ;
-
-# def booking(request):
-#     return render(request, 'main/booking.html') ;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
-
-# def tariff(request):
-#     return render(request, 'main/tariff.html') ;
-
-# def offer(request):
-#     return render(request, 'main/offer.html') ;
-
-# def location(request):
-#     return render(request, 'main/location.html') ;
-
-# def contact(request):
-#     return render(request, 'main/contact.html') ;
-
-# def about(request):
-#     return render(request, 'main/about.html') ;
-
-# def privacy(request):
-#     return render(request, 'main/privacy.html') ;
-
-# def tc(request):
-#     return render(request, 'main/tc.html') ;
-
-# def help(request):
-#     return render(request, 'main/help.html') ;
-# # Create your views here.

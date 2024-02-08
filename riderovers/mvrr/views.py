@@ -228,6 +228,7 @@ def bike(request):
 
     return render(request, 'main/bikereg.html')
 
+
 @login_required(login_url='login')
 def adminboard(request):
     user_profile_info = UserProfile.objects.get(user_id=request.user.id)
@@ -238,6 +239,9 @@ def adminboard(request):
         bookings = BookingData.objects.all()
         bike_registrations = BikeData.objects.all()
 
+        # Calculate total earnings
+        total_earnings = BookingData.objects.aggregate(total_earnings=Sum('total_price'))['total_earnings'] or 0
+
         # Pass the data to the template
         context = {
             'user_profile_info':user_profile_info,
@@ -245,11 +249,13 @@ def adminboard(request):
             'customers': customers,
             'bookings': bookings,
             'bike_registrations': bike_registrations,
+            'total_earnings': total_earnings,
         }
 
         return render(request, 'main/adminboard.html', context)
     else:
         return redirect('login')
+
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
 
 def tariff(request):

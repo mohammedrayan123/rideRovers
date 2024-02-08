@@ -130,8 +130,6 @@ This project is licensed under the Christ(Deemed to be university) University Li
 * [![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 * [![Tailwind CSS](https://img.shields.io/badge/-Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 <!-- GETTING STARTED -->
@@ -197,16 +195,16 @@ npm install npm@latest -g
 
 2. **Visual Analytics**: The admin dashboard includes charts and visualizations for better business insights.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 <!-- CONTRIBUTING -->
 
 ## CONTRIBUTORS
-Name:
+### Name:
   Kingsuk Rakshit https://github.com/Kingsuk-rakshit
+  <br>
   Mohammed Rayan https://github.com/mohammedrayan123
+  <br>
   Mubashir Salim https://github.com/mubashirsalim88
 
 <!-- CONTACT -->
@@ -214,8 +212,6 @@ Name:
 Gmail - riderovers134@gmail.com
 
 Project Link: https://github.com/mohammedrayan123/rideRovers.git
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
